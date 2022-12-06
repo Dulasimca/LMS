@@ -3,15 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-
 @Injectable({
   providedIn: 'root'
 })
- 
-export class RestAPIService {
-   //BASEURL = 'https://api.tnadw-hms.in/api/';
+export class RestApiService {
+     //BASEURL = 'https://api.tnadw-hms.in/api/';
   //BASEURL = 'https://adatwdapi.tessolve.com/api/';
-  BASEURL = 'https://localhost:44304/api/';  
+  BASEURL = 'https://localhost:44341/api/';  
   public HttpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -21,6 +19,7 @@ export class RestAPIService {
       'Access-Control-Allow-Credentials': 'true'
     })
   };
+
   constructor(private httpClient: HttpClient) { }
 
   get(url: any): Observable<any> {

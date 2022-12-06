@@ -1,0 +1,131 @@
+<div class="col-12 md:col-12 lg:col-12 container">
+    <div class="grid to-center">
+        <!-- <div class="col-12 md:col-12 lg:col-12"> -->
+            <p-panel header="studentRegisterForm">
+                <div class="col-12 md:col-12 lg:col-12 box" style="margin-top: 20px;">
+                    <form #f="ngForm" name="studentregisterForm">
+                        <div #main class="col-12 md:col-12 lg:col-12">
+                            <div class="grid to-center">
+                                <div #row1 class="col-12 md:col-12 lg:col-12">
+                                    <div class="grid">
+
+                                       <div class="col-12 md:col-4 lg:col-3">
+                                            <span class="p-float-label">
+                                                <input name="_firstname" type="text" [(ngModel)]="firstname" pInputText>
+                                                <label for="_firstname">FirstName</label>
+                                            </span>
+                                        </div>
+                                        <div class="col-12 md:col-4 lg:col-3">
+                                            <span class="p-float-label">
+                                                <input name="_lastname" type="text" [(ngModel)]="lastname" pInputText>
+                                                <label for="_lastname">Lastname</label>
+                                            </span>
+                                        </div>
+
+                                        <div class="col-12 md:col-4 lg:col-3">
+                                            <span class="p-float-label">
+                                                <input name="_register" type="number" [(ngModel)]="registerNumber" pInputText>
+                                                <label for="_register">RegisterNumber</label>
+                                            </span>
+                                        </div>
+
+                                        <div class="col-12 md:col-4 lg:col-3">
+                                            <span class="p-float-label">
+                                                <p-dropdown name="_gender" [autoDisplayFirst]="false" [options]="genderOptions" [(ngModel)]="gender"
+                                                [required]="true">
+                                                </p-dropdown>
+                                                <label for="_gender">Gender</label>
+                                            </span>
+                                        </div>
+
+                                        <div class="col-12 md:col-4 lg:col-3">
+                                            <span class="p-float-label">
+                                                <input name="_DOB" type="calender" [(ngModel)]="dob" pInputText>
+                                                <label for="_dob">DOB</label>
+                                            </span>
+                                        </div>
+
+                                        <div class="col-12 md:col-4 lg:col-3">
+                                            <span class="p-float-label">
+                                                <input name="_age" type="number" [(ngModel)]="age" pInputText>
+                                                <label for="_age">Age</label>
+                                            </span>
+                                        </div>
+
+                                        <div class="col-12 md:col-4 lg:col-3">
+                                            <span class="p-float-label">
+                                                <input name="_email" type="text" [(ngModel)]="email" pInputText>
+                                                <label for="_email">Email</label>
+                                            </span>
+                                        </div>
+
+                                        <div class="col-12 md:col-4 lg:col-3">
+                                            <span class="p-float-label">
+                                                <input name="_address" type="text" [(ngModel)]="address" pInputText>
+                                                <label for="_address">Address</label>
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="col-12 md:col-4 lg:col-3">
+                                            <span class="p-float-label">
+                                                <input name="_pincode" type="number" [(ngModel)]="pincode" pInputText>
+                                                <label for="_pincode">Pincode</label>
+                                            </span>
+                                        </div>
+
+                                        <div class="col-12 md:col-4 lg:col-3">
+                                            <span class="p-float-label">
+                                                <p-dropdown name="_collegename" [autoDisplayFirst]="false" [options]="collegenameOptions" [(ngModel)]="collegename"
+                                                [required]="true">
+                                                </p-dropdown>
+                                                <label for="_collegename">collegename</label>
+                                            </span>
+                                        </div>
+
+                                        <div class="col-12 md:col-4 lg:col-3">
+                                            <span class="p-float-label">
+                                                <p-dropdown name="_course" [autoDisplayFirst]="false" [options]="courseOptions" [(ngModel)]="course"
+                                                [required]="true">
+                                                </p-dropdown>
+                                                <label for="_course">Course</label>
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="col-12 md:col-4 lg:col-3">
+                                            <span class="p-float-label">
+                                                <p-dropdown name="_department" [autoDisplayFirst]="false" [options]="departmentOptions" [(ngModel)]="department"
+                                                [required]="true">
+                                                </p-dropdown>
+                                                <label for="_department">Department</label>
+                                            </span>
+                                        </div>
+                                        <div class="col-12 md:col-4 lg:col-3">
+                                            <span class="p-float-label">
+                                                <input name="_password" type="text" [(ngModel)]="password" pInputText>
+                                                <label for="_password">Password</label>
+                                            </span>
+                                        </div>
+
+                                        <div class="col-12 md:col-4 lg:col-3">
+                                            <span class="p-float-label">
+                                                <input name="_confirmpassword" type="text" [(ngModel)]="confirmpassword" pInputText>
+                                                <label for="_confirmpassword">ConfirmPassword</label>
+                                            </span>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                               
+                                <div #row3 class="col-12 md:col-11 lg:col-11 txt-to-center no-padding">
+                                    <button pButton type="button" label="Save" icon="pi pi-check" (click)="onSave()"></button>&nbsp;
+                                    <button pButton type="button" label="View" icon="pi pi-eye" (click)="onView()"></button>&nbsp;
+                                            
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </p-panel>
+        <!-- </div> -->
+    </div>
+</div>
