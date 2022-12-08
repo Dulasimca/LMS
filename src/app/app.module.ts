@@ -15,6 +15,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 
 
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookaddComponent } from './bookadd/bookadd.component';
@@ -25,6 +26,7 @@ import { LibRegisterComponent } from './lib-register/lib-register.component';
 import { StudentRequestComponent } from './student-request/student-request.component';
 import { RestApiService } from './Services/rest-api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { TableModule } from 'primeng/table';
 
 
 @NgModule({
@@ -50,6 +52,7 @@ import { HttpClientModule } from '@angular/common/http';
     CalendarModule,
     SidebarModule,
     PanelMenuModule,
+    TableModule,
     HttpClientModule
    
   ],

@@ -12,6 +12,7 @@ export class LibRegisterComponent implements OnInit {
   email: any;
   password:any;
   confirmpassword:any;
+  id:any;
   
   constructor(private resApiService : RestApiService)
    { }
@@ -21,6 +22,7 @@ export class LibRegisterComponent implements OnInit {
   onSave() {
     console.log("==",this.email)
     const params = {
+      'sno': this.id,
       'username': this.username,
       'email': this.email,
       'password': this.password,
