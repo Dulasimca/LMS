@@ -1,0 +1,29 @@
+<div class="col-12 md:col-12 lg:col-12 no-padding header hdr-shdw-btm">
+    <div class="col-12 md:col-12 lg:col-12">
+        <div class="grid">
+            <div fxLayout="row" class="col-7 md:col-4 lg:col-2" style="font-size: 25px;">
+                <span>
+                    <!-- <i class="pi pi-bars" style="font-size: 1.25rem;"></i> -->
+                    <button pButton pRipple type="button" icon="pi pi-bars" class="p-button-rounded"
+                    fxHide.gt-lg fxFlex.gt-md fxHide.gt-sm fxHide.md fxHide.lg fxHide.xl fxHide.lt-xl
+                    fxShow.lt-sm fxShow.xs fxShow.gt-xs
+                    (click)="onToggleSidenav()"></button>
+                   <!-- fxHide.gt-xs fxHide.lg fxHide.lt-lg fxHide.lt-md fxHide.lt-sm fxHide.lt-xl fxHide.xl  -->
+                </span>&nbsp;
+                <span>
+                    <img src="" />
+                </span>&nbsp;
+                <span>LIBRARY MANAGEMENT SYSTEM</span>
+            </div>
+            <div class="col-1 md:col-6 lg:col-8">
+                <!-- <span>Court Case</span> -->
+            </div>
+            <div class="col-4 md:col-2 lg:col-2 txt-to-end">
+                <span>
+                    <button pButton pRipple type="button" label="Logout" icon="pi pi-sign-out"
+                        class="p-button-rounded" (click)="onLogout()"></button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

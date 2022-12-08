@@ -29,7 +29,7 @@ export class StudentRegisterComponent implements OnInit {
   confirmpassword:any;
   id:any;
   data: any;
- cols:any;
+  cols:any;
   Genderdata: any;
   Collegedata: any;
   Coursedata: any;

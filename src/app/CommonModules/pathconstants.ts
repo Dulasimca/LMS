@@ -11,5 +11,6 @@ export class PathConstants {
     public static readonly collegemaster_Get='CollegeMaster';
     public static readonly coursemaster_Get='CourseMaster';
     public static readonly department_Get='DepartmentMaster';
+    public static readonly getlibrarienregister_Get ='librarienregisterget/GetLibrarienRegister';
 
 }
