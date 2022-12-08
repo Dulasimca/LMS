@@ -25,6 +25,10 @@ import { LibRegisterComponent } from './lib-register/lib-register.component';
 import { StudentRequestComponent } from './student-request/student-request.component';
 import { RestApiService } from './Services/rest-api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { TableModule } from 'primeng/table';
+import { HeaderComponent } from './header/header.component';
+import { LibPageComponent } from './lib-page/lib-page.component';
+
 
 
 @NgModule({
@@ -35,6 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     StudentRegisterComponent,
     LibRegisterComponent,
     StudentRequestComponent,
+    HeaderComponent,
+    LibPageComponent,
 
   ],
   imports: [
@@ -50,7 +56,10 @@ import { HttpClientModule } from '@angular/common/http';
     CalendarModule,
     SidebarModule,
     PanelMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    TableModule
+    
+    
    
   ],
   providers: [RestApiService],
