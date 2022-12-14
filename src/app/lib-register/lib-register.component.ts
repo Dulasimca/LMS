@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Table } from 'primeng/table';
 import { PathConstants } from '../CommonModules/pathconstants';
 import { RestApiService } from '../Services/rest-api.service';
 
@@ -14,7 +15,7 @@ export class LibRegisterComponent implements OnInit {
   password:any;
   confirmpassword:any;
   id:any;
-  
+  loading:any;
   cols: any;
   data: any;
   constructor(private resApiService : RestApiService)
@@ -47,12 +48,14 @@ export class LibRegisterComponent implements OnInit {
       'password': this.password,
       'confirmpassword': this.confirmpassword,
     }
-    this.resApiService.post(PathConstants.librarienregister_Post, params).subscribe(res => { })
+    this.resApiService.post(PathConstants.librarienregister_Post, params).subscribe(res => { Table })
     this.onclear();
+    this.onview();
+    
     
 }
 onEdit(rowData: any) {
-  this.id = rowData.sno;
+  this.id = 0;
   this.username = rowData.v_username;
   this.email = rowData.v_email;
   this.password = rowData.v_password;
@@ -60,12 +63,22 @@ onEdit(rowData: any) {
   
 }
 onclear() {
-  this.id = null;
+  this.id = 0;
   this.username = null;
   this.email = null;
   this.password = null;
   this.confirmpassword= null;
  
+}
+onCheck(){
+
+this.data.forEach( (i: { email: any; }) => {
+      if(i.email  === this.email ) {
+        //this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'casestatusname is already exist, Please input different name' }];
+          this.email = null;
+      }
+    })
+
 }
 
 }

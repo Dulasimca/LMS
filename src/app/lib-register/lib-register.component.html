@@ -17,7 +17,7 @@
                                     </div>
                                     <div class="col-12 md:col-4 lg:col-3">
                                         <span class="p-float-label">
-                                            <input name="_email" type="email" [(ngModel)]="email" pInputText>
+                                            <input name="_email" type="email"  (change)="onCheck()" [(ngModel)]="email" pInputText>
                                             <label for="_email">Your Email</label>
                                         </span>
                                     </div>
@@ -54,44 +54,33 @@
         
     </div>
 </div>
-<p-table [columns]="cols" [value]="data" [rows]="10" [rowsPerPageOptions]="[5,10,15,20]" responsiveLayout="scroll">
-<ng-template pTemplate="header" let-columns>
-<tr>
-<th>S.No</th>
-<th *ngFor="let col of columns">
- {{col.header}}
-</th>
-<th>
-Edit/Update
-</th>
-</tr>
-</ng-template>
-<ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" let-columns="columns">
-<tr>
-<td class="td-border">
-<span class="p-column-title">
- S.No :
- </span>
-<span style="text-align: end;">
- {{rowIndex+1}}
-</span>
-</td>
-<td *ngFor="let col of columns" [style.text-align]="col.align" class="td-border">
-<span class="p-column-title">
-{{col.header}} :
-</span>
- <span style="text-align: end;"> {{rowData[col.field]}}
- </span>
-</td>
- <td class="td-border">
- <span class="p-column-title">
-Edit/Update :
-</span>
-<span><button icon="pi pi-pencil" pButton type="button" (onClick)="onEdit(rowData)">
-
- Edit
- </button></span>
- </td>
- </tr>
- </ng-template>
- </p-table>
+<p-table #dt [columns]="cols" [value]="data" styleClass="p-datatable-gridlines" [loading]="loading">
+    <ng-template pTemplate="caption">
+        <div class="grid" style="width: -webkit-fill-available;">
+            <div class="lg:col-6 no-pad-top no-pad-btm"></div>
+            <div class="lg:col-6 table-hdr-export">
+            
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th>S.No:</th>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+            <th>Edit</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" let-columns="columns">
+        <tr>
+            <td>{{rowIndex+1}}</td>
+            <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+            </td>
+            <td>
+                <p-button icon="pi pi-pencil" (onClick)="onEdit(rowData)"></p-button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

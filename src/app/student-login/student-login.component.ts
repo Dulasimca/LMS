@@ -20,7 +20,7 @@ export class StudentLoginComponent implements OnInit {
 
   onLogin() {
    
-    this._router.navigate(['/dashboard']);
+    this._router.navigate(['/header']);
   }
 
   onShowPwd() {

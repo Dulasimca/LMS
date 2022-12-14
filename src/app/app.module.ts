@@ -11,6 +11,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { CalendarModule } from 'primeng/calendar';
 import { SidebarModule } from 'primeng/sidebar';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import {MenuModule} from 'primeng/menu';
 
 
 
@@ -29,6 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { HeaderComponent } from './header/header.component';
 import { LibPageComponent } from './lib-page/lib-page.component';
+import { MenuComponent } from './menu/menu.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -42,6 +45,8 @@ import { LibPageComponent } from './lib-page/lib-page.component';
     StudentRequestComponent,
     HeaderComponent,
     LibPageComponent,
+    MenuComponent,
+    DashboardComponent,
 
   ],
   imports: [
@@ -58,7 +63,11 @@ import { LibPageComponent } from './lib-page/lib-page.component';
     SidebarModule,
     PanelMenuModule,
     HttpClientModule,
-    TableModule
+    TableModule,
+    MenuModule,
+    
+
+    
     
     
    
