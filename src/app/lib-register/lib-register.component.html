@@ -17,14 +17,15 @@
                                     </div>
                                     <div class="col-12 md:col-4 lg:col-3">
                                         <span class="p-float-label">
-                                            <input name="_email" type="email"  (change)="onCheck()" [(ngModel)]="email" pInputText>
+                                            <input name="_email" type="email" (change)="onCheck()" [(ngModel)]="email"
+                                                pInputText>
                                             <label for="_email">Your Email</label>
                                         </span>
                                     </div>
                                     <div class="col-12 md:col-4 lg:col-3">
                                         <span class="p-float-label">
                                             <input name="_password" type="password" [(ngModel)]="password" minlength="8"
-                                                maxlength="8" pInputText>
+                                                maxlength="8" (input)="check(password)"pInputText>
                                             <label for="_password">Password</label>
                                         </span>
                                     </div>
@@ -32,18 +33,41 @@
                                     <div class="col-12 md:col-4 lg:col-3">
                                         <span class="p-float-label">
                                             <input name="_confirmpassword" type="password" [(ngModel)]="confirmpassword"
-                                                minlength="8" maxlength="8" pInputText>
+                                                minlength="8" maxlength="8" (input)="checkPassword()" pInputText>
                                             <label for="_confirmpassword">Confirmpassword</label>
+                                            <div *ngIf="showErrMsg" style="color: rgb(250, 15, 62); font-size: 12px;">
+                                                Password did
+                                                not match</div>
+                                            <div *ngIf="showMatchMsg"
+                                                style="color: rgb(28, 182, 92); font-size: 12px; text-align: left;">
+                                                Password
+                                                matched!</div>
+                                            <div *ngIf="SpecialCharErrMsg"
+                                                style="color: rgb(250, 15, 62); font-size: 12px; text-align: left;">
+                                                Atleast one Special
+                                                Character must!</div>
+                                            <div *ngIf="NumericErrMsg"
+                                                style="color: rgb(250, 15, 62); font-size: 12px; text-align: left;">
+                                                Atleast one Numeric(0-9)
+                                                must!</div>
+                                            <div *ngIf="UpperCaseErrMsg"
+                                                style="color: rgb(250, 15, 62); font-size: 12px; text-align: left">
+                                                Atleast one
+                                                Uppercase(A-Z) must!</div>
+                                            <div *ngIf="LengthErrMsg"
+                                                style="color: rgb(250, 15, 62); font-size: 12px; text-align: left">
+                                                Minimum 8 Characters!</div>
                                         </span>
                                     </div>
-
                                 </div>
                             </div>
 
                             <div #row3 class="col-12 md:col-11 lg:col-11 txt-to-center no-padding">
-                                <button pButton type="button" label="Save" icon="pi pi-check" (click)="onSave()"></button>&nbsp;
-                                <button pButton type="button" label="View" icon="pi pi-eye" (click)="onview()"></button>&nbsp;
-                                        
+                                <button pButton type="button" label="Save" icon="pi pi-check"
+                                    (click)="onSave()"></button>&nbsp;
+                                <button pButton type="button" label="View" icon="pi pi-eye"
+                                    (click)="onview()"></button>&nbsp;
+
                             </div>
                         </div>
                     </div>
@@ -51,7 +75,7 @@
             </div>
         </p-panel>
         <!-- </div> -->
-        
+
     </div>
 </div>
 <p-table #dt [columns]="cols" [value]="data" styleClass="p-datatable-gridlines" [loading]="loading">
@@ -59,7 +83,7 @@
         <div class="grid" style="width: -webkit-fill-available;">
             <div class="lg:col-6 no-pad-top no-pad-btm"></div>
             <div class="lg:col-6 table-hdr-export">
-            
+
             </div>
         </div>
     </ng-template>

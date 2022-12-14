@@ -28,6 +28,7 @@ export class BookaddComponent implements OnInit {
   Languagedata: any;
   Editiondata: any;
   Categorydata: any;
+  loading:any;
   constructor(private restapiservice: RestApiService) { }
 
   ngOnInit(): void {
@@ -99,10 +100,10 @@ this.restapiservice.get(PathConstants.book_Get).subscribe(res => {this.data = re
 }
 onEdit(rowData:any){
   this.id=rowData.bookid,
-  this.languageOptions=rowData.v_languageid,
+  this.language=rowData.v_languageid,
   this.bookname=rowData.v_bookname,
   this.author=rowData.v_author,
-  this.edition=rowData.v_editionid,
+  this.editionOptions=rowData.v_editionid,
   this.category=rowData.v_bookcategoryid,
   this.date=rowData.v_publisheddate,
   this.noCopies=rowData.v_copies,

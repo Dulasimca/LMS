@@ -10,37 +10,45 @@ import { RestApiService } from '../Services/rest-api.service';
   styleUrls: ['./lib-register.component.css']
 })
 export class LibRegisterComponent implements OnInit {
-  username:any;
+  username: any;
   email: any;
-  password:any;
-  confirmpassword:any;
-  id:any;
-  loading:any;
+  password: any;
+  confirmpassword: any;
+  id: any;
+  loading: any;
   cols: any;
   data: any;
-  constructor(private resApiService : RestApiService)
-   { }
+  showErrMsg: boolean | undefined;
+  showMatchMsg!: boolean;
+  disableSave: boolean = false;
+  SpecialCharErrMsg: any;
+  pswdStrongMsg: any;
+  NumericErrMsg: any;
+  UpperCaseErrMsg: any;
+  LengthErrMsg: any;
+  validatePassword: boolean = false;
+  constructor(private resApiService: RestApiService) { }
 
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.cols = [
       { field: 'v_username', header: 'UserName', align: 'left !important' },
       { field: 'v_email', header: 'Email', align: 'right !important' },
       { field: 'v_password', header: 'Passowrd', align: 'left !important' },
       { field: 'v_confirmpassword', header: 'Confirmpassword', align: 'left !important' },
-      
+
     ]
   }
   onview() {
-    
-    this.resApiService.get(PathConstants.getlibrarienregister_Get).subscribe(res => { 
-      this.data = res.Table; 
-      console.log('enter',this.data)
+
+    this.resApiService.get(PathConstants.getlibrarienregister_Get).subscribe(res => {
+      this.data = res.Table;
+      console.log('enter', this.data)
     })
 
   }
 
   onSave() {
-    console.log("==",this.email)
+    console.log("==", this.email)
     const params = {
       'sno': this.id,
       'username': this.username,
@@ -51,34 +59,92 @@ export class LibRegisterComponent implements OnInit {
     this.resApiService.post(PathConstants.librarienregister_Post, params).subscribe(res => { Table })
     this.onclear();
     this.onview();
-    
-    
-}
-onEdit(rowData: any) {
-  this.id = 0;
-  this.username = rowData.v_username;
-  this.email = rowData.v_email;
-  this.password = rowData.v_password;
-  this.confirmpassword = rowData.v_confirmpassword;
-  
-}
-onclear() {
-  this.id = 0;
-  this.username = null;
-  this.email = null;
-  this.password = null;
-  this.confirmpassword= null;
- 
-}
-onCheck(){
 
-this.data.forEach( (i: { email: any; }) => {
-      if(i.email  === this.email ) {
+
+  }
+  onEdit(rowData: any) {
+    this.id = 0;
+    this.username = rowData.v_username;
+    this.email = rowData.v_email;
+    this.password = rowData.v_password;
+    this.confirmpassword = rowData.v_confirmpassword;
+
+  }
+  onclear() {
+    this.id = 0;
+    this.username = null;
+    this.email = null;
+    this.password = null;
+    this.confirmpassword = null;
+
+  }
+  onCheck() {
+
+    this.data.forEach((i: { email: any; }) => {
+      if (i.email === this.email) {
         //this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'casestatusname is already exist, Please input different name' }];
-          this.email = null;
+        this.email = null;
       }
     })
 
+  }
+  checkPassword() {
+    if (this.password !== undefined && this.password !== null && this.password.trim() !== '' &&
+      this.confirmpassword !== undefined && this.confirmpassword !== null && this.confirmpassword.trim() !== '') {
+      if (this.password.trim() !== this.confirmpassword.trim()) {
+        this.showErrMsg = true;
+        this.showMatchMsg = false;
+        this.disableSave = false;
+      } else {
+        this.showErrMsg = false;
+        this.showMatchMsg = true;
+        this.disableSave = true;
+
+      }
+    } else {
+      this.showErrMsg = false;
+    }
+  }
+
+  check(confirmpassword: any) {
+
+    if (confirmpassword.match(/[@$!%*?&]/g)) {
+      this.SpecialCharErrMsg = false;
+      this.validatePassword = true;
+
+    } else {
+      this.SpecialCharErrMsg = true;
+      this.pswdStrongMsg = false;
+      this.validatePassword = false;
+    }
+    if (confirmpassword.match(/[0-9]/g)) {
+      this.NumericErrMsg = false;
+      this.validatePassword = true;
+    } else {
+      this.NumericErrMsg = true;
+      this.pswdStrongMsg = false;
+      this.validatePassword = false;
+
+    }
+    if (confirmpassword.match(/[A-Z]/g)) {
+      this.UpperCaseErrMsg = false;
+      this.validatePassword = true;
+    } else {
+      this.UpperCaseErrMsg = true;
+      this.pswdStrongMsg = false;
+      this.validatePassword = false;
+    }
+    if (confirmpassword.length >= 8) {
+      this.LengthErrMsg = false;
+      this.validatePassword = true;
+    } else {
+      this.LengthErrMsg = true;
+      this.pswdStrongMsg = false;
+      this.validatePassword = false;
+    }
+    if (confirmpassword.match(/[@$!%*?&]/g) && confirmpassword.match(/[0-9]/g) && confirmpassword.match(/[A-Z]/g) && confirmpassword.length > 8)
+      this.pswdStrongMsg = true;
+    // this.validatePassword=false;
+  }
 }
 
-}

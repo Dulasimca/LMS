@@ -44,7 +44,6 @@ export class StudentRegisterComponent implements OnInit {
   UpperCaseErrMsg: any;
   LengthErrMsg: any;
   validatePassword: boolean = false;
-  
   pincode_max:any;
 
   constructor(private resApiService : RestApiService) { }

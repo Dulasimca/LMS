@@ -1,22 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { RadioButtonModule } from 'primeng/radiobutton';
-
 import { CalendarModule } from 'primeng/calendar';
 import { SidebarModule } from 'primeng/sidebar';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import {MenuModule} from 'primeng/menu';
-
-
-
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookaddComponent } from './bookadd/bookadd.component';
@@ -32,6 +25,7 @@ import { HeaderComponent } from './header/header.component';
 import { LibPageComponent } from './lib-page/lib-page.component';
 import { MenuComponent } from './menu/menu.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MenuMasterComponent } from './menu-master/menu-master.component';
 
 
 
@@ -47,6 +41,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LibPageComponent,
     MenuComponent,
     DashboardComponent,
+    MenuMasterComponent,
+  
 
   ],
   imports: [
