@@ -14,7 +14,7 @@ export class StudentRegisterComponent implements OnInit {
   registerNumber:any;
   gender:any;
   genderOptions:any;
-  dob:any;
+  dob:any = Date;
   age:any;
   address:any;
   pincode:any;
@@ -34,6 +34,18 @@ export class StudentRegisterComponent implements OnInit {
   Collegedata: any;
   Coursedata: any;
   Departmentdata:any;
+  dataofbirth: any;
+  showErrMsg: boolean | undefined;
+  showMatchMsg!:boolean;
+  disableSave: boolean=false;
+  SpecialCharErrMsg: any;
+  pswdStrongMsg: any;
+  NumericErrMsg: any;
+  UpperCaseErrMsg: any;
+  LengthErrMsg: any;
+  validatePassword: boolean = false;
+  
+  pincode_max:any;
 
   constructor(private resApiService : RestApiService) { }
 
@@ -49,15 +61,15 @@ export class StudentRegisterComponent implements OnInit {
       { field: 'vfirstname', header: 'Firstname', align: 'left !important' },
       { field: 'vlastname', header: 'Lastname', align: 'right !important' },
       { field: 'vregno', header: 'Regno', align: 'left !important' },
-      { field: 'vgenderid', header: 'Gender', align: 'left !important' },
+      { field: 'vgendername', header: 'Gender', align: 'left !important' },
       { field: 'vdob', header: 'DOB', align: 'left !important' },
       { field: 'vage', header: 'Age', align: 'left !important' },
       { field: 'vemail', header: 'Email', align: 'left !important' },
       { field: 'vaddress', header: 'Address', align: 'left !important' },
       { field: 'vpincode', header: 'Pincode', align: 'left !important' },
-      { field: 'vcollegeid', header: 'College', align: 'left !important' },
-      { field: 'vcourseid', header: 'Course', align: 'left !important' },
-      { field: 'vdepartment', header: 'Department', align: 'left !important' },
+      { field: 'vcollegename', header: 'College', align: 'left !important' },
+      { field: 'vcoursename', header: 'Course', align: 'left !important' },
+      { field: 'vdepartmentname', header: 'Department', align: 'left !important' },
       { field: 'vpassword', header: 'Password', align: 'left !important' },
       { field: 'vconfirmpassword', header: 'Confirmpassword', align: 'left !important' },
     ]
@@ -98,6 +110,20 @@ export class StudentRegisterComponent implements OnInit {
             break;
     }
   }
+  public CalculateAge(): void
+{
+
+if(this.dob)
+ {
+        var timeDiff = Math.abs(Date.now() - this.dob.getTime());
+        console.log('1',timeDiff)
+        var a = Math.floor((timeDiff / (1000 * 3600 * 24))/365);
+        this.age=a;
+ console.log("hjdh",this.dob.getTime());
+        console.log("age",a);
+  
+  }
+}
 onSave(){
   const params = {
     'sno':0,
@@ -138,5 +164,63 @@ onEdit(rowData:any){
   this.department=rowData.vdepartment,
   this.password=rowData.vpassword,
   this.confirmpassword=rowData.vconfirmpassword
+}
+checkPassword() {
+  if (this.password !== undefined && this.password !== null && this.password.trim() !== '' &&
+  this.confirmpassword !== undefined && this.confirmpassword !== null && this.confirmpassword.trim() !== '') {
+        if(this.password.trim() !== this.confirmpassword.trim()) {
+          this.showErrMsg = true;
+          this.showMatchMsg = false;
+          this.disableSave=false;
+        } else {
+          this.showErrMsg = false;
+          this.showMatchMsg = true;
+          this.disableSave=true;
+
+        }
+  } else {
+    this.showErrMsg = false;
+  }
+}
+
+check(confirmpassword: any) {
+
+  if (confirmpassword.match(/[@$!%*?&]/g)) {
+  this.SpecialCharErrMsg = false;
+  this.validatePassword=true;
+
+  } else {
+  this.SpecialCharErrMsg = true;
+  this.pswdStrongMsg = false;
+  this.validatePassword=false;
+ }    
+if (confirmpassword.match(/[0-9]/g)) {   
+  this.NumericErrMsg = false;
+  this.validatePassword=true;
+ } else {    
+ this.NumericErrMsg = true;    
+ this.pswdStrongMsg = false;  
+ this.validatePassword=false;
+
+ }    
+ if (confirmpassword.match(/[A-Z]/g)) {    
+ this.UpperCaseErrMsg = false;  
+ this.validatePassword=true;  
+ } else {    
+ this.UpperCaseErrMsg = true;    
+ this.pswdStrongMsg = false;  
+ this.validatePassword=false;  
+ }    
+ if (confirmpassword.length >= 8) {    
+ this.LengthErrMsg = false;   
+ this.validatePassword=true; 
+ } else {    
+ this.LengthErrMsg = true;    
+ this.pswdStrongMsg = false;
+ this.validatePassword=false;
+ }
+ if (confirmpassword.match(/[@$!%*?&]/g) && confirmpassword.match(/[0-9]/g) && confirmpassword.match(/[A-Z]/g) && confirmpassword.length > 8)
+ this.pswdStrongMsg = true;
+ // this.validatePassword=false;
 }
 }
