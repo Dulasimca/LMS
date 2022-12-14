@@ -40,8 +40,8 @@
 
                                         <div class="col-12 md:col-4 lg:col-3">
                                             <span class="p-float-label">
-                                                <input name="_DOB" type="calender" [(ngModel)]="dob" pInputText>
-                                                <label for="_dob">DOB</label>
+                                                <p-calendar name="_dateformat" (onSelect)="CalculateAge()" [(ngModel)]="dob"></p-calendar>
+                                                <label for="_dateformat">DOB</label>
                                             </span>
                                         </div>
 
@@ -67,10 +67,16 @@
                                         </div>
                                         
                                         <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <input name="_pincode" type="number" [(ngModel)]="pincode" pInputText>
-                                                <label for="_pincode">Pincode</label>
-                                            </span>
+                                            <div>  <label for="_pincode" [ngStyle]="{'color': (pincode !== null && pincode !== undefined) ? (pincode>pincode_max ? 'crimson' : '#495057') : '#495057'}">
+                                                Pincode</label>
+                                          </div>
+                                                <input name="_pincode" type="number" [(ngModel)]="pincode" pInputText minlength="6"
+                                                maxlength="6" appInputFormat="digitOnly" pattern="^6[0-4]\d{4}$" required/>
+                                                    <!-- <div>  <span *ngIf="(pincode != null && pincode !== undefined)">
+                                                         <span *ngIf="(f.controls._pincode.invalid)||(pincode>pincode_max)"
+                                                   style="color: crimson;font-size: 12px;">Invalid pincode</span>
+                                                      </span>
+                                            </div> -->
                                         </div>
 
                                         <div class="col-12 md:col-4 lg:col-3">
@@ -101,18 +107,34 @@
                                         </div>
                                         <div class="col-12 md:col-4 lg:col-3">
                                             <span class="p-float-label">
-                                                <input name="_password" type="text" [(ngModel)]="password" pInputText>
+                                                <input name="_password" type="text" [(ngModel)]="password" autocomplete="off" pInputText
+                                                minlength="8" maxlength="12" (input)="check(password)">
                                                 <label for="_password">Password</label>
                                             </span>
                                         </div>
 
                                         <div class="col-12 md:col-4 lg:col-3">
                                             <span class="p-float-label">
-                                                <input name="_confirmpassword" type="text" [(ngModel)]="confirmpassword" pInputText>
+                                                <input name="_confirmpassword" type="text" [(ngModel)]="confirmpassword" autocomplete="off" pInputText
+                                                minlength="8" maxlength="12" (input)="checkPassword()">
                                                 <label for="_confirmpassword">ConfirmPassword</label>
+                                                <div *ngIf="showErrMsg" style="color: rgb(250, 15, 62); font-size: 12px;">Password did
+                                                    not match</div>
+                                                    <div *ngIf="showMatchMsg" style="color: rgb(28, 182, 92); font-size: 12px; text-align: left;">Password
+                                                        matched!</div>
+                                                <div *ngIf="SpecialCharErrMsg"
+                    style="color: rgb(250, 15, 62); font-size: 12px; text-align: left;">Atleast one Special
+                    Character must!</div>
+                  <div *ngIf="NumericErrMsg"
+                    style="color: rgb(250, 15, 62); font-size: 12px; text-align: left;">Atleast one Numeric(0-9)
+                    must!</div>
+                  <div *ngIf="UpperCaseErrMsg"
+                    style="color: rgb(250, 15, 62); font-size: 12px; text-align: left">Atleast one
+                    Uppercase(A-Z) must!</div>
+                  <div *ngIf="LengthErrMsg" style="color: rgb(250, 15, 62); font-size: 12px; text-align: left">
+                    Minimum 8 Characters!</div>
                                             </span>
                                         </div>
-                                        
                                     </div>
                                 </div>
                                
