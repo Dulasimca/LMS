@@ -32,6 +32,8 @@ import { HeaderComponent } from './header/header.component';
 import { LibPageComponent } from './lib-page/lib-page.component';
 import { MenuComponent } from './menu/menu.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LanguagemasterComponent } from './Master/languagemaster/languagemaster.component';
+import { EditionmasterComponent } from './Master/editionmaster/editionmaster.component';
 
 
 
@@ -47,6 +49,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LibPageComponent,
     MenuComponent,
     DashboardComponent,
+    LanguagemasterComponent,
+    EditionmasterComponent,
 
   ],
   imports: [

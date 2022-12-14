@@ -5,6 +5,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { LibPageComponent } from './lib-page/lib-page.component';
 import { LibRegisterComponent } from './lib-register/lib-register.component';
+import { EditionmasterComponent } from './Master/editionmaster/editionmaster.component';
+import { LanguagemasterComponent } from './Master/languagemaster/languagemaster.component';
 import { StudentLoginComponent } from './student-login/student-login.component';
 import { StudentRegisterComponent } from './student-register/student-register.component';
 import { StudentRequestComponent } from './student-request/student-request.component';
@@ -19,7 +21,9 @@ const routes: Routes = [
   {path:'student-request',component:StudentRequestComponent},
   {path:'header',component:HeaderComponent},
   {path:'lib_page',component:LibPageComponent},
-  {path:'dashboard',component:DashboardComponent}
+  {path:'dashboard',component:DashboardComponent},
+  {path:'languagemaster',component:LanguagemasterComponent},
+  {path:'editionmaster',component:EditionmasterComponent}
 ];
 
 @NgModule({
