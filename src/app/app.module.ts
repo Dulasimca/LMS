@@ -25,12 +25,10 @@ import { HeaderComponent } from './header/header.component';
 import { LibPageComponent } from './lib-page/lib-page.component';
 import { MenuComponent } from './menu/menu.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-<<<<<<< HEAD
 import { MenuMasterComponent } from './menu-master/menu-master.component';
-=======
 import { LanguagemasterComponent } from './Master/languagemaster/languagemaster.component';
 import { EditionmasterComponent } from './Master/editionmaster/editionmaster.component';
->>>>>>> 7d7e2d422e8e9f43f7712476406b04bf6a0d71ea
+import { BookcategorymasterComponent } from './Master/bookcategorymaster/bookcategorymaster.component';
 
 
 
@@ -46,13 +44,11 @@ import { EditionmasterComponent } from './Master/editionmaster/editionmaster.com
     LibPageComponent,
     MenuComponent,
     DashboardComponent,
-<<<<<<< HEAD
     MenuMasterComponent,
-  
-=======
     LanguagemasterComponent,
     EditionmasterComponent,
->>>>>>> 7d7e2d422e8e9f43f7712476406b04bf6a0d71ea
+    BookcategorymasterComponent
+  
 
   ],
   imports: [
