@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PathConstants } from 'src/app/CommonModules/pathconstants';
 import { RestApiService } from 'src/app/Services/rest-api.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { RestApiService } from 'src/app/Services/rest-api.service';
   styleUrls: ['./editionmaster.component.css']
 })
 export class EditionmasterComponent implements OnInit {
-  edirtionname:any;
+  editionname:any;
   selectedType:any;
   cols:any;
   data:any;
@@ -15,6 +16,27 @@ export class EditionmasterComponent implements OnInit {
   constructor(private restapiservice: RestApiService) { }
 
   ngOnInit(): void {
+    this.cols = [
+      { field: 'v_editionname', header: 'Edition', align: 'left !important' }
+    ]
   }
+onSave()
+{
+  const params = {
+    'editionid': 0,
+    'editionname': this.editionname,
+    'flag':true
+  };
+  this.restapiservice.post(PathConstants.editionmaster_Post, params).subscribe(res => {
+    
+   })
+}
+onView(){
+  this.restapiservice.get(PathConstants.editionmaster_Get).subscribe(res => {this.data = res.Table
+  })
 
+}
+onEdit(rowData:any){
+
+}
 }

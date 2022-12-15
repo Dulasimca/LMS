@@ -28,7 +28,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MenuMasterComponent } from './menu-master/menu-master.component';
 import { LanguagemasterComponent } from './Master/languagemaster/languagemaster.component';
 import { EditionmasterComponent } from './Master/editionmaster/editionmaster.component';
-import { BookcategorymasterComponent } from './Master/bookcategorymaster/bookcategorymaster.component';
+import { CoursemasterComponent } from './Master/coursemaster/coursemaster.component';
 
 
 
@@ -47,8 +47,7 @@ import { BookcategorymasterComponent } from './Master/bookcategorymaster/bookcat
     MenuMasterComponent,
     LanguagemasterComponent,
     EditionmasterComponent,
-    BookcategorymasterComponent
-  
+    CoursemasterComponent,
 
   ],
   imports: [

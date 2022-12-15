@@ -17,18 +17,19 @@ export class LanguagemasterComponent implements OnInit {
 
   ngOnInit(): void {
     this.cols = [
-      { field: 'v_languagename', header: 'Language', align: 'left !important' },
+      { field:'v_langugename', header: 'Language', align: 'left !important' },
     ]
   }
 onSave(){
   const params = {
     'languageid': 0,
     'languagename': this.languagename,
+    'flag':true
   };
   this.restapiservice.post(PathConstants.languagemaster_Post, params).subscribe(res => { })
 }
 onView(){
-  this.restapiservice.get(PathConstants.languagemaster_Get).subscribe(res => {this.data = res.Table
+  this.restapiservice.get(PathConstants. languagemaster_Get).subscribe(res => {this.data = res.Table
   })
 }
 onEdit( rowData:any){
