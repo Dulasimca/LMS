@@ -31,6 +31,7 @@ import { EditionmasterComponent } from './Master/editionmaster/editionmaster.com
 import { BookcategorymasterComponent } from './Master/bookcategorymaster/bookcategorymaster.component';
 import { CollegemasterComponent } from './Master/collegemaster/collegemaster.component';
 import { DepartmentmasterComponent } from './Master/departmentmaster/departmentmaster.component';
+import { CoursemasterComponent } from './Master/coursemaster/coursemaster.component';
 
 
 
@@ -51,8 +52,8 @@ import { DepartmentmasterComponent } from './Master/departmentmaster/departmentm
     EditionmasterComponent,
     BookcategorymasterComponent,
     CollegemasterComponent,
-    DepartmentmasterComponent
-  
+    DepartmentmasterComponent,
+    CoursemasterComponent,
 
   ],
   imports: [
