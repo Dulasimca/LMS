@@ -13,7 +13,11 @@ export class PathConstants {
     public static readonly updatecourse_Post='updatecoursemaster/Post';
     public static readonly department_Get='DepartmentMaster';
     public static readonly getlibrarienregister_Get ='librarienregisterget/GetLibrarienRegister';
-    public static readonly languagemaster_Post='LanguageMaster/Post';
+    public static readonly languagemaster_Post ='LanguageMaster/Post'
+    public static readonly Entity_Post ='BookCategoryMaster/Post'
+    //public static readonly GetBookCategoryMaster_Get='BookCategoryMaster';
+    public static readonly CollegeMasterEntity_Post='CollegeMaster/Post';
+    public static readonly DepartmentMasterEntity_Post='DepartmentMaster/Post';
     public static readonly languagemaster_Get='LanguageMaster';
     public static readonly updatelanguage_Post='updatelanguagemaster/Post';
     public static readonly editionmaster_Post='BookEdition/Post';

@@ -28,7 +28,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MenuMasterComponent } from './menu-master/menu-master.component';
 import { LanguagemasterComponent } from './Master/languagemaster/languagemaster.component';
 import { EditionmasterComponent } from './Master/editionmaster/editionmaster.component';
+import { BookcategorymasterComponent } from './Master/bookcategorymaster/bookcategorymaster.component';
+import { CollegemasterComponent } from './Master/collegemaster/collegemaster.component';
+import { DepartmentmasterComponent } from './Master/departmentmaster/departmentmaster.component';
 import { CoursemasterComponent } from './Master/coursemaster/coursemaster.component';
+import { MessagesModule } from 'primeng/messages';
 
 
 
@@ -47,6 +51,9 @@ import { CoursemasterComponent } from './Master/coursemaster/coursemaster.compon
     MenuMasterComponent,
     LanguagemasterComponent,
     EditionmasterComponent,
+    BookcategorymasterComponent,
+    CollegemasterComponent,
+    DepartmentmasterComponent,
     CoursemasterComponent,
 
   ],
@@ -66,6 +73,8 @@ import { CoursemasterComponent } from './Master/coursemaster/coursemaster.compon
     HttpClientModule,
     TableModule,
     MenuModule,
+    MessagesModule,
+    
     
 
     

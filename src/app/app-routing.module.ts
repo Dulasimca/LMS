@@ -5,6 +5,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { LibPageComponent } from './lib-page/lib-page.component';
 import { LibRegisterComponent } from './lib-register/lib-register.component';
+import { BookcategorymasterComponent } from './Master/bookcategorymaster/bookcategorymaster.component';
+import { CollegemasterComponent } from './Master/collegemaster/collegemaster.component';
+import { DepartmentmasterComponent } from './Master/departmentmaster/departmentmaster.component';
 import { CoursemasterComponent } from './Master/coursemaster/coursemaster.component';
 import { EditionmasterComponent } from './Master/editionmaster/editionmaster.component';
 import { LanguagemasterComponent } from './Master/languagemaster/languagemaster.component';
@@ -25,6 +28,9 @@ const routes: Routes = [
   {path:'dashboard',component:DashboardComponent},
   {path:'languagemaster',component:LanguagemasterComponent},
   {path:'editionmaster',component:EditionmasterComponent},
+  {path:'bookcategorymaster',component:BookcategorymasterComponent},
+  {path:'collegemaster',component:CollegemasterComponent},
+  {path:'departmentmaster',component:DepartmentmasterComponent},
   {path:'coursemaster',component:CoursemasterComponent},
 ];
 

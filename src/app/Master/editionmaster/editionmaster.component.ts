@@ -52,4 +52,10 @@ this.editionid = rowData.v_editionid;
 this.editionname = rowData.v_editionname;
 this.selectedType = (rowData.isactive === 'Active') ? 1 : 0;
 }
-}
+
+ onclear() {
+  //this.editionid = 0;
+  this.editionname = null;
+  this.selectedType = null;
+  
+}}

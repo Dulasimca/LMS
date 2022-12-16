@@ -30,6 +30,8 @@ onSave(){
     'isactive': (this.selectedType == 1) ? true : false
   };
   this.restapiservice.post(PathConstants.languagemaster_Post, params).subscribe(res => { })
+  this.onView();
+  this.onclear();
 }
 else{
   const params = {
@@ -50,4 +52,10 @@ onEdit(rowData:any){
   this.selectedType = (rowData.isactive === 'Active') ? 1 : 0;
   console.log('hh',rowData.v_langugename);
 }
-}
+
+onclear() {
+  //this.languageid = 0;
+  this.languagename = null;
+  this.selectedType = null;
+  
+}}

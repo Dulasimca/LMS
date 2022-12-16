@@ -31,6 +31,8 @@ onSave(){
   };
   this.restapiservice.post(PathConstants.coursemaster_Post, params).subscribe(res => {
 })
+this.onView();
+this.onclear();
 }
 else{
   const params = {
@@ -50,5 +52,9 @@ onEdit(rowData:any){
 this.courseid=rowData.v_courseid;
 this.coursename=rowData.v_coursename;
 this.selectedType = (rowData.isactive === 'Active') ? 1 : 0;
+}
+onclear() {
+ 
+  
 }
 }
