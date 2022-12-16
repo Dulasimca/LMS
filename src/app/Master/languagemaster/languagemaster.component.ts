@@ -12,27 +12,42 @@ export class LanguagemasterComponent implements OnInit {
   selectedType:any;
   cols:any;
   data:any;
- 
+  languageid:any;
   constructor(private restapiservice: RestApiService) { }
 
   ngOnInit(): void {
+    this.languageid=0;
     this.cols = [
-      { field:'v_langugename', header: 'Language', align: 'left !important' },
+      { field:'v_languagename', header: 'Language', align: 'left !important' },
+      { field:'v_flag', header: 'status', align: 'left !important' }
     ]
   }
 onSave(){
+  if(this.languageid==0){
   const params = {
-    'languageid': 0,
+    'languageid': this.languageid,
     'languagename': this.languagename,
-    'flag':true
+    'isactive': (this.selectedType == 1) ? true : false
   };
   this.restapiservice.post(PathConstants.languagemaster_Post, params).subscribe(res => { })
 }
+else{
+  const params = {
+    'languageid': this.languageid,
+    'languagename': this.languagename,
+    'isactive': (this.selectedType == 1) ? true : false
+  };
+  this.restapiservice.post(PathConstants.updatelanguage_Post, params).subscribe(res => { })
+}
+}
 onView(){
-  this.restapiservice.get(PathConstants. languagemaster_Get).subscribe(res => {this.data = res.Table
+  this.restapiservice.get(PathConstants.languagemaster_Get).subscribe(res => {this.data = res.Table
   })
 }
-onEdit( rowData:any){
-
+onEdit(rowData:any){
+  this.languageid = rowData.v_languageid;
+  this.languagename = rowData.v_languagename;
+  this.selectedType = (rowData.isactive === 'Active') ? 1 : 0;
+  console.log('hh',rowData.v_langugename);
 }
 }

@@ -29,9 +29,11 @@ export class BookaddComponent implements OnInit {
   Editiondata: any;
   Categorydata: any;
   loading:any;
+  bookid:any;
   constructor(private restapiservice: RestApiService) { }
 
   ngOnInit(): void {
+    this.bookid=0;
     this.restapiservice.get(PathConstants.languagemaster_Get).subscribe(res => {
       this.Languagedata=res.Table;
     console.log("+++",this.Languagedata);
@@ -57,13 +59,13 @@ export class BookaddComponent implements OnInit {
     switch (type) {
       case 'L':
         this.Languagedata.forEach((c:any) => {
-          languageSelection.push({ label: c.v_langugename, value: c.v_languageid });
+          languageSelection.push({ label: c.v_languagename, value: c.v_languageid });
         })
         this.languageOptions = languageSelection;
         this.languageOptions.unshift({ label: '-select', value: null });
         break;
           case 'B':
-            this.Categorydata .forEach((c:any) => {
+            this.Categorydata.forEach((c:any) => {
               bookcategorySelection.push({ label: c.v_bookcategoryname, value: c.v_bookcategoryid });
             })
             this.categoryOptions = bookcategorySelection;
@@ -80,8 +82,9 @@ export class BookaddComponent implements OnInit {
   }
   
 onSave(){
+  if(this.bookid==0){
     const params = {
-      'bookid': 0,
+      'bookid': this.bookid,
       'languageid': this.language,
       'bookname': this.bookname,
       'author': this.author,
@@ -91,7 +94,26 @@ onSave(){
       'copies':this.noCopies,
       'remarks':this.remarks
     };
+    console.log('edi',this.edition);
     this.restapiservice.post(PathConstants.book_Post, params).subscribe(res => { })
+    
+  }
+  else{
+    const params = {
+      'bookid': this.bookid,
+      'languageid': this.language,
+      'bookname': this.bookname,
+      'author': this.author,
+      'editionid': this.edition,
+      'bookcategoryid':this.category,
+      'publisheddate':this.date,
+      'copies':this.noCopies,
+      'remarks':this.remarks,
+      'flag':true
+    };
+    this.restapiservice.post(PathConstants.update_Post, params).subscribe(res => {
+    })
+  }
   }
     
 onView(){
@@ -99,7 +121,7 @@ this.restapiservice.get(PathConstants.book_Get).subscribe(res => {this.data = re
  })
 }
 onEdit(rowData:any){
-  this.id=rowData.bookid,
+  this.bookid=rowData.v_bookid,
   this.language=rowData.v_languageid,
   this.bookname=rowData.v_bookname,
   this.author=rowData.v_author,
@@ -108,6 +130,6 @@ onEdit(rowData:any){
   this.date=rowData.v_publisheddate,
   this.noCopies=rowData.v_copies,
   this.remarks=rowData.v_remarks
-
+  
 }
 }
