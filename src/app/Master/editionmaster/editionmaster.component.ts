@@ -30,13 +30,19 @@ onSave()
   this.restapiservice.post(PathConstants.editionmaster_Post, params).subscribe(res => {
     
    })
+   this.onView();
+   this.onclear();
 }
 onView(){
   this.restapiservice.get(PathConstants.editionmaster_Get).subscribe(res => {this.data = res.Table
   })
 
 }
-onEdit(rowData:any){
-
+onEdit(row: any) {
 }
-}
+ onclear() {
+  //this.editionid = 0;
+  this.editionname = null;
+  this.selectedType = null;
+  
+}}

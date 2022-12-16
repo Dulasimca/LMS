@@ -13,7 +13,7 @@ export class DepartmentmasterComponent implements OnInit {
   selectedType:any;
   cols:any;
   data:any;
-  Department: any;
+  DepartmentName: any;
  
   constructor(private restapiservice: RestApiService) { }
 
@@ -25,15 +25,19 @@ export class DepartmentmasterComponent implements OnInit {
 onSave(){
   const params = {
     'departmentid': 0,
-    'departmentname': this.Department,
+    'departmentname': this.DepartmentName,
   };
   this.restapiservice.post(PathConstants.DepartmentMasterEntity_Post, params).subscribe(res => { })
+  this.onView();
+  this.onclear();
 }
 onView(){
  this.restapiservice.get(PathConstants.department_Get).subscribe(res => {this.data = res.Table
   })
 }
-onEdit( rowData:any){
-
+onEdit(row: any) {
 }
-}
+onclear() {
+ 
+  
+}}

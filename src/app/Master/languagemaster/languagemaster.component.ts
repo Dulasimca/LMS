@@ -27,12 +27,19 @@ onSave(){
     'flag':true
   };
   this.restapiservice.post(PathConstants.languagemaster_Post, params).subscribe(res => { })
+  this.onView();
+  this.onclear();
 }
 onView(){
   this.restapiservice.get(PathConstants. languagemaster_Get).subscribe(res => {this.data = res.Table
   })
 }
-onEdit( rowData:any){
-
+onEdit(row: any) {
+  
 }
-}
+onclear() {
+  //this.languageid = 0;
+  this.languagename = null;
+  this.selectedType = null;
+  
+}}

@@ -1,81 +1,87 @@
 <div class="col-12 md:col-12 lg:col-12 container">
     <div class="grid to-center">
         <!-- <div class="col-12 md:col-12 lg:col-12"> -->
-            <p-panel header="AddBook">
-                <div class="col-12 md:col-12 lg:col-12 box" style="margin-top: 20px;">
-                    <form #f="ngForm" name="bookAddForm">
-                        <div #main class="col-12 md:col-12 lg:col-12">
-                            <div class="grid to-center">
-                                <div #row1 class="col-12 md:col-12 lg:col-12">
-                                    <div class="grid">
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <p-dropdown name="_language" [autoDisplayFirst]="false" [options]="languageOptions" (onClick)="onSelect('L')" [(ngModel)]="language"
-                                                [required]="true">
-                                                </p-dropdown>
-                                                <label for="_language">BookLanguage</label>
-                                            </span>
-                                        </div>
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <p-dropdown name="_category" [autoDisplayFirst]="false" [options]="categoryOptions" (onClick)="onSelect('E')" [(ngModel)]="category"
-                                                [required]="true">
-                                                </p-dropdown>
-                                                <label for="_category">BookCategory</label>
-                                            </span>
-                                        </div>
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <p-dropdown name="_edition" [autoDisplayFirst]="false" [options]="editionOptions" (onClick)="onSelect('B')" [(ngModel)]="edition"
-                                                [required]="true">
-                                                </p-dropdown>
-                                                <label for="_edition">Bookedition</label>
-                                            </span>
-                                        </div>
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <input name="_name" type="text" [(ngModel)]="bookname" pInputText>
-                                                <label for="_name">Bookname</label>
-                                            </span>
-                                        </div>
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <input name="_author" type="text" [(ngModel)]="author" pInputText>
-                                                <label for="_author">Author</label>
-                                            </span>
-                                        </div>
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <input name="_nocopies" type="text" [(ngModel)]="noCopies" pInputText>
-                                                <label for="_nocopies">NoofCopies</label>
-                                            </span>
-                                        </div>
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <input name="_date" type="text" [(ngModel)]="date" pInputText>
-                                                <label for="_date">Publisheddate</label>
-                                            </span>
-                                        </div>
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <input name="_remarks" type="text" [(ngModel)]="remarks" pInputText>
-                                                <label for="_remarks">Remarks</label>
-                                            </span>
-                                        </div>
-                                        
+        <p-panel header="AddBook">
+            <div class="col-12 md:col-12 lg:col-12 box" style="margin-top: 20px;">
+                <form #f="ngForm" name="bookAddForm">
+                    <div #main class="col-12 md:col-12 lg:col-12">
+                        <div class="grid to-center">
+                            <div #row1 class="col-12 md:col-12 lg:col-12">
+                                <div class="grid">
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <p-dropdown name="_language" [autoDisplayFirst]="false"
+                                                [options]="languageOptions" (onClick)="onSelect('L')"
+                                                [(ngModel)]="language" [required]="true">
+                                            </p-dropdown>
+                                            <label for="_language">BookLanguage</label>
+                                        </span>
                                     </div>
-                                </div>
-                               
-                                <div #row3 class="col-12 md:col-11 lg:col-11 txt-to-center no-padding">
-                                    <button pButton type="button" label="Save" icon="pi pi-check" (click)="onSave()"></button>&nbsp;
-                                    <button pButton type="button" label="View" icon="pi pi-eye" (click)="onView()"></button>&nbsp;
-                                            
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <p-dropdown name="_category" [autoDisplayFirst]="false"
+                                                [options]="categoryOptions" (onClick)="onSelect('E')"
+                                                [(ngModel)]="category" [required]="true">
+                                            </p-dropdown>
+                                            <label for="_category">BookCategory</label>
+                                        </span>
+                                    </div>
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <p-dropdown name="_edition" [autoDisplayFirst]="false"
+                                                [options]="editionOptions" (onClick)="onSelect('B')"
+                                                [(ngModel)]="edition" [required]="true">
+                                            </p-dropdown>
+                                            <label for="_edition">Bookedition</label>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <input name="_name" type="text" [(ngModel)]="bookname" pInputText>
+                                            <label for="_name">Bookname</label>
+                                        </span>
+                                    </div>
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <input name="_author" type="text" [(ngModel)]="author" pInputText>
+                                            <label for="_author">Author</label>
+                                        </span>
+                                    </div>
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <input name="_nocopies" type="text" [(ngModel)]="noCopies" pInputText>
+                                            <label for="_nocopies">NoofCopies</label>
+                                        </span>
+                                    </div>
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <input name="_date" type="text" [(ngModel)]="date" pInputText>
+                                            <label for="_date">Publisheddate</label>
+                                        </span>
+                                    </div>
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <input name="_remarks" type="text" [(ngModel)]="remarks" pInputText>
+                                            <label for="_remarks">Remarks</label>
+                                        </span>
+                                    </div>
+
                                 </div>
                             </div>
+
+                            <div #row3 class="col-12 md:col-11 lg:col-11 txt-to-center no-padding">
+                                <button pButton type="button" label="Save" icon="pi pi-check"
+                                    (click)="onSave()"></button>&nbsp;
+                                <button pButton type="button" label="View" icon="pi pi-eye"
+                                    (click)="onView()"></button>&nbsp;
+
+                            </div>
                         </div>
-                    </form>
-                </div>
-            </p-panel>
+                    </div>
+                </form>
+            </div>
+        </p-panel>
         <!-- </div> -->
     </div>
 </div>
@@ -84,7 +90,7 @@
         <div class="grid" style="width: -webkit-fill-available;">
             <div class="lg:col-6 no-pad-top no-pad-btm"></div>
             <div class="lg:col-6 table-hdr-export">
-            
+
             </div>
         </div>
     </ng-template>

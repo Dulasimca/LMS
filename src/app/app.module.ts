@@ -32,6 +32,7 @@ import { BookcategorymasterComponent } from './Master/bookcategorymaster/bookcat
 import { CollegemasterComponent } from './Master/collegemaster/collegemaster.component';
 import { DepartmentmasterComponent } from './Master/departmentmaster/departmentmaster.component';
 import { CoursemasterComponent } from './Master/coursemaster/coursemaster.component';
+import { MessagesModule } from 'primeng/messages';
 
 
 
@@ -72,6 +73,8 @@ import { CoursemasterComponent } from './Master/coursemaster/coursemaster.compon
     HttpClientModule,
     TableModule,
     MenuModule,
+    MessagesModule,
+    
     
 
     
