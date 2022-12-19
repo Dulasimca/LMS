@@ -51,7 +51,4 @@ onEdit(rowData: any) {
   this.departmentName=rowData.v_departmentname;
   this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
 }
-onclear() {
- 
-  
-}}
+}

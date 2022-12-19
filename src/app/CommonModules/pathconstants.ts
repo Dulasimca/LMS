@@ -16,6 +16,7 @@ export class PathConstants {
     public static readonly languagemaster_Post ='LanguageMaster/Post'
     public static readonly Entity_Post ='BookCategoryMaster/Post';
     public static readonly CollegeMasterEntity_Post='CollegeMaster/Post';
+    public static readonly updatecollegemaster_Post='UpdateCollegeMaster/Post';
     public static readonly DepartmentMasterEntity_Post='DepartmentMaster/Post';
     public static readonly department_Get='DepartmentMaster';
     public static readonly updatedepartment_Post='updatedepartmentmaster/Post';
@@ -24,4 +25,5 @@ export class PathConstants {
     public static readonly editionmaster_Post='BookEdition/Post';
     public static readonly editionmaster_Get='BookEdition';
     public static readonly updateedition_Post='updateeditionmaster/Post';
+    public static readonly StudentreqEntity_Post='studentRequest/Post';
 }

@@ -12,7 +12,7 @@
                                     <div class="grid">
                                         <div class="col-12 md:col-4 lg:col-3">
                                             <span class="p-float-label">
-                                                <input name="_college" type="text" (change)="onCheck()"  [(ngModel)]="College" pInputText>
+                                                <input name="_college" type="text" (change)="onCheck()"  [(ngModel)]="collegename" pInputText>
                                                 <label for="_college">College</label>
                                             </span>
                                         </div>
@@ -71,7 +71,7 @@
                                                  <span class="p-column-title">
                                                 Edit/Update :
                                                 </span>
-                                                <span><button icon="pi pi-pencil" pButton type="button" (onClick)="onEdit(rowData)">
+                                                <span><button icon="pi pi-pencil" pButton type="button" (click)="onEdit(rowData)">
                                                  Edit
                                                  </button></span>
                                                  </td>

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Message } from 'primeng/api';
+import { ResponseMessage } from 'src/app/CommonModules/message-constants';
 import { PathConstants } from 'src/app/CommonModules/pathconstants';
 import { RestApiService } from 'src/app/Services/rest-api.service';
 
@@ -11,9 +14,12 @@ export class EditionmasterComponent implements OnInit {
   editionname:any;
   selectedType:any;
   cols:any;
-  data:any;
- editionid:any;
+  data: any[] = [];
+  editionid:any;
+  responseMsg: Message[] = [];
   constructor(private restapiservice: RestApiService) { }
+  @ViewChild('f', {static: false}) _respondentForm!: NgForm;
+
 
   ngOnInit(): void {
     this.editionid=0;
@@ -58,4 +64,13 @@ this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
   this.editionname = null;
   this.selectedType = null;
   
-}}
+}
+onCheck() {
+  this.data.forEach(i => {
+    if(i.editionname  === this.editionname ) {
+      this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'colleagename is already exist, Please input different name' }];
+        this.editionname = null;
+    }
+  })
+}
+}

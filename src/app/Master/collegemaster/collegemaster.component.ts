@@ -13,47 +13,60 @@ import { RestApiService } from 'src/app/Services/rest-api.service';
 })
 export class CollegemasterComponent implements OnInit {
 
-  College:any;
+  
   selectedType:any;
   cols:any;
-  data:any;
+  data: any[] = [];
   collegename: any;
   responseMsg: Message[] = [];
+  collegeid:any;
+
 
   @ViewChild('f', {static: false}) _respondentForm!: NgForm;
 
   constructor(private restapiservice: RestApiService) { }
 
   ngOnInit(): void {
+    this.collegeid=0;
     this.cols = [
       { field: 'v_collegename', header: 'collegename', align: 'left !important' },
+      { field: 'v_flag', header: 'Status', align: 'left !important' }
     ]
   }
 onSave(){
+  if(this.collegeid==0){
   const params = {
-    'collegeid': 0,
-    'collegename': this.College,
+    'collegeid': this.collegeid,
+    'collegename': this.collegename,
+    'flag': (this.selectedType == 1) ? true : false
   };
   this.restapiservice.post(PathConstants.CollegeMasterEntity_Post, params).subscribe(res => { })
  
-  this.onclear();
+}
+else{
+  const params = {
+    'collegeid': this.collegeid,
+    'collegename': this.collegename,
+    'flag': (this.selectedType == 1) ? true : false
+  };
+  this.restapiservice.post(PathConstants.updatecollegemaster_Post, params).subscribe(res => {
+  })
+}
 }
 onView(){
   this.restapiservice.get(PathConstants.collegemaster_Get).subscribe(res => {this.data = res.Table
   })
 }
-onEdit(row: any) {
-}
-
-onclear() {
-
-  
+onEdit(rowData: any) {
+  this.collegeid=rowData.v_collegeid;
+  this.collegename=rowData.v_collegename;
+  this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
 }
 onCheck() {
-  this.data.forEach( (b: { collegename: any; })  => {
-    if(b.collegename  === this.College ) {
-      this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'casestatusname is already exist, Please input different name' }];
-        this.College = null;
+  this.data.forEach(i => {
+    if(i.collegename  === this.collegename ) {
+      this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'colleagename is already exist, Please input different name' }];
+        this.collegename = null;
     }
   })
 }

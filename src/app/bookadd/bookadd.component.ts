@@ -121,15 +121,18 @@ this.restapiservice.get(PathConstants.book_Get).subscribe(res => {this.data = re
  })
 }
 onEdit(rowData:any){
-  this.bookid=rowData.v_bookid,
-  this.language=rowData.v_languageid,
-  this.bookname=rowData.v_bookname,
-  this.author=rowData.v_author,
-  this.editionOptions=rowData.v_editionid,
-  this.category=rowData.v_bookcategoryid,
-  this.date=rowData.v_publisheddate,
-  this.noCopies=rowData.v_copies,
-  this.remarks=rowData.v_remarks
+  this.bookid=rowData.v_bookid;
+  this.language=rowData.v_langaugeid;
+  this.languageOptions= [{ label: rowData.v_languagename, value: rowData.v_langaugeid }];
+  this.bookname=rowData.v_bookname;
+  this.author=rowData.v_author;
+  this.edition=rowData.v_editionid;
+  this.editionOptions=[{label:rowData.v_editionname,value:rowData.v_editionid }];
+  this.category=rowData.v_bookcategoryid;
+  this.categoryOptions=[{label:rowData.v_bookcategoryname,value:rowData.v_bookcategoryid}];
+  this.date=rowData.v_publisheddate;
+  this.noCopies=rowData.v_copies;
+  this.remarks=rowData.v_remarks;
   
 }
 }
