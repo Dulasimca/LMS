@@ -45,10 +45,12 @@ export class StudentRegisterComponent implements OnInit {
   LengthErrMsg: any;
   validatePassword: boolean = false;
   pincode_max:any;
+  sno:any;
 
   constructor(private resApiService : RestApiService) { }
 
   ngOnInit(): void {
+    this.sno=0;
     this.resApiService.get(PathConstants.gendermaster_Get).subscribe(res => {
       this.Genderdata=res.Table;
     console.log("+++",this.Genderdata);
@@ -124,8 +126,10 @@ if(this.dob)
   }
 }
 onSave(){
+  if(this.sno==0)
+  {
   const params = {
-    'sno':0,
+    'sno':this.sno,
     'firstname':this.firstname,
     'lastname':this.lastname,
     'regno':this.registerNumber,
@@ -139,28 +143,56 @@ onSave(){
     'department':this.department,
     'email':this.email,
     'password':this.password,
-    'confirmpassword':this.confirmpassword
-  }
+    'confirmpassword':this.confirmpassword,
+    'flag':true
+  };
   this.resApiService.post(PathConstants.studentreg_Post, params).subscribe(res => { })
+}
+
+else{
+  const params = {
+    'sno':this.sno,
+    'firstname':this.firstname,
+    'lastname':this.lastname,
+    'regno':this.registerNumber,
+    'genderid':this.gender,
+    'dob':this.dob,
+    'age':this.age,
+    'address':this.address,
+    'pincode':this.pincode,
+    'collegeid':this.collegename,
+    'courseid':this.course,
+    'department':this.department,
+    'email':this.email,
+    'password':this.password,
+    'confirmpassword':this.confirmpassword,
+    'flag':true
+  };
+  this.resApiService.post(PathConstants.updatestudentreg_Post, params).subscribe(res => { })
+}
 }
 onView(){
   this.resApiService.get(PathConstants.studentreg_Get).subscribe(res => {this.data = res.Table
   })
 }
 onEdit(rowData:any){
-  this.id=rowData.sno,
+  this.sno=rowData.vsno,
   this.firstname=rowData.vfirstname,
   this.lastname=rowData.vlastname,
   this.registerNumber=rowData.vregno,
   this.gender=rowData.vgenderid,
+  this.genderOptions=[{label:rowData.vgendername,value:rowData.vgenderid}];
   this.dob=rowData.vdob,
   this.age=rowData.vage,
   this.email=rowData.vemail,
   this.address=rowData.vaddress,
   this.pincode=rowData.vpincode,
   this.collegename=rowData.vcollegeid,
+  this.collegenameOptions=[{label:rowData.vcollegename,value:rowData.vcollegeid}];
   this.course=rowData.vcourseid,
+  this.courseOptions=[{label:rowData.vcoursename,value:rowData.vcourseid}];
   this.department=rowData.vdepartment,
+  this.departmentOptions=[{label:rowData.vdepartmentname,value:rowData.vdepartment}];
   this.password=rowData.vpassword,
   this.confirmpassword=rowData.vconfirmpassword
 }

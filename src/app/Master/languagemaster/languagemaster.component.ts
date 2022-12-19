@@ -11,7 +11,7 @@ export class LanguagemasterComponent implements OnInit {
   languagename:any;
   selectedType:any;
   cols:any;
-  data:any;
+  data:any[] = [];
   languageid:any;
   constructor(private restapiservice: RestApiService) { }
 
@@ -27,7 +27,7 @@ onSave(){
   const params = {
     'languageid': this.languageid,
     'languagename': this.languagename,
-    'isactive': (this.selectedType == 1) ? true : false
+    'flag': (this.selectedType == 1) ? true : false
   };
   this.restapiservice.post(PathConstants.languagemaster_Post, params).subscribe(res => { })
   this.onView();
@@ -37,7 +37,7 @@ else{
   const params = {
     'languageid': this.languageid,
     'languagename': this.languagename,
-    'isactive': (this.selectedType == 1) ? true : false
+    'flag': (this.selectedType == 1) ? true : false
   };
   this.restapiservice.post(PathConstants.updatelanguage_Post, params).subscribe(res => { })
 }
@@ -49,7 +49,7 @@ onView(){
 onEdit(rowData:any){
   this.languageid = rowData.v_languageid;
   this.languagename = rowData.v_languagename;
-  this.selectedType = (rowData.isactive === 'Active') ? 1 : 0;
+  this.selectedType = (rowData.v_flag === 'Active') ? 1 : 0;
   console.log('hh',rowData.v_langugename);
 }
 
@@ -58,4 +58,12 @@ onclear() {
   this.languagename = null;
   this.selectedType = null;
   
-}}
+}
+// onCheck(){
+//   this.data.forEach(i => {
+//   if(i.languagename === this.languagename){
+//     this.resp
+//   }
+//   })
+// }
+}

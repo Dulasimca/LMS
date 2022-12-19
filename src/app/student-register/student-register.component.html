@@ -67,9 +67,7 @@
                                         </div>
                                         
                                         <div class="col-12 md:col-4 lg:col-3">
-                                            <div>  <label for="_pincode" [ngStyle]="{'color': (pincode !== null && pincode !== undefined) ? (pincode>pincode_max ? 'crimson' : '#495057') : '#495057'}">
-                                                Pincode</label>
-                                          </div>
+                                           
                                                 <input name="_pincode" type="number" [(ngModel)]="pincode" pInputText minlength="6"
                                                 maxlength="6" appInputFormat="digitOnly" pattern="^6[0-4]\d{4}$" required/>
                                                     <!-- <div>  <span *ngIf="(pincode != null && pincode !== undefined)">
@@ -77,6 +75,9 @@
                                                    style="color: crimson;font-size: 12px;">Invalid pincode</span>
                                                       </span>
                                             </div> -->
+                                            <div>  <label for="_pincode" [ngStyle]="{'color': (pincode !== null && pincode !== undefined) ? (pincode>pincode_max ? 'crimson' : '#495057') : '#495057'}">
+                                                Pincode</label>
+                                          </div>
                                         </div>
 
                                         <div class="col-12 md:col-4 lg:col-3">
@@ -184,7 +185,7 @@
          <span class="p-column-title">
         Edit/Update :
         </span>
-        <span><button icon="pi pi-pencil" pButton type="button" (onClick)="onEdit(rowData)">
+        <span><button icon="pi pi-pencil" pButton type="button" (click)="onEdit(rowData)">
          Edit
          </button></span>
          </td>

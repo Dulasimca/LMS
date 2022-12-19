@@ -28,7 +28,7 @@ onSave()
     const params = {
       'editionid': this.editionid,
       'editionname': this.editionname,
-      'isactive': (this.selectedType == 1) ? true : false
+      'flag': (this.selectedType == 1) ? true : false
     };
   this.restapiservice.post(PathConstants.editionmaster_Post, params).subscribe(res => {
     
@@ -38,7 +38,7 @@ onSave()
     const params = {
       'editionid': this.editionid,
       'editionname': this.editionname,
-      'isactive': (this.selectedType == 1) ? true : false
+      'flag': (this.selectedType == 1) ? true : false
     };
     this.restapiservice.post(PathConstants.updateedition_Post, params).subscribe(res => { })
   }
@@ -50,7 +50,7 @@ onView(){
 onEdit(rowData:any){
 this.editionid = rowData.v_editionid;
 this.editionname = rowData.v_editionname;
-this.selectedType = (rowData.isactive === 'Active') ? 1 : 0;
+this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
 }
 
  onclear() {

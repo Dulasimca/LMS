@@ -13,29 +13,43 @@ export class DepartmentmasterComponent implements OnInit {
   selectedType:any;
   cols:any;
   data:any;
-  DepartmentName: any;
- 
+  departmentName: any;
+  departmentid:any;
   constructor(private restapiservice: RestApiService) { }
 
   ngOnInit(): void {
+    this.departmentid=0;
     this.cols = [
-      { field:'v_departmentname', header:'departmentname', align: 'left !important' },
+      { field:'v_departmentname', header:'Departmentname', align: 'left !important' },
+      { field:'v_flag', header:'Status', align: 'left !important' }
     ]
   }
 onSave(){
+  if(this.departmentid==0){
   const params = {
-    'departmentid': 0,
-    'departmentname': this.DepartmentName,
+    'departmentid': this.departmentid,
+    'departmentname': this.departmentName,
+    'flag': (this.selectedType == 1) ? true : false
   };
   this.restapiservice.post(PathConstants.DepartmentMasterEntity_Post, params).subscribe(res => { })
-  this.onView();
-  this.onclear();
+}
+else{
+  const params = {
+    'departmentid': this.departmentid,
+    'departmentname': this.departmentName,
+    'flag': (this.selectedType == 1) ? true : false,
+  };
+  this.restapiservice.post(PathConstants.updatedepartment_Post, params).subscribe(res => { })
+}
 }
 onView(){
  this.restapiservice.get(PathConstants.department_Get).subscribe(res => {this.data = res.Table
   })
 }
-onEdit(row: any) {
+onEdit(rowData: any) {
+  this.departmentid=rowData.v_departmentid;
+  this.departmentName=rowData.v_departmentname;
+  this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
 }
 onclear() {
  
