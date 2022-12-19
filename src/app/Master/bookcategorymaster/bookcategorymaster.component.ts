@@ -11,10 +11,10 @@ import { RestApiService } from 'src/app/Services/rest-api.service';
   styleUrls: ['./bookcategorymaster.component.css']
 })
 export class BookcategorymasterComponent implements OnInit {
-  BookCategory:any;
+  bookCategory:any;
   selectedType:any;
   cols:any;
-  data:any;
+  data: any[] = [];
   languageid: any;
   responseMsg: Message[] = [];
 
@@ -25,12 +25,13 @@ export class BookcategorymasterComponent implements OnInit {
   ngOnInit(): void {
     this.cols = [
       { field: 'v_bookcategoryname', header: 'bookcategoryname', align: 'left !important' },
+      { field: 'v_flag', header: 'Status', align: 'left !important' }
     ]
   }
 onSave(){
   const params = {
     'bookcategoryid': 0,
-    'bookcategoryname': this.BookCategory,
+    'bookcategoryname': this.bookCategory,
   };
   this.restapiservice.post(PathConstants.Entity_Post, params).subscribe(res => { })
   this.onView();
@@ -46,15 +47,15 @@ onEdit(row: any) {
 }
 onclear() {
   this.languageid = 0;
-  this.BookCategory = null;
+  this.bookCategory = null;
   this.selectedType = null;
   
 }
 onCheck() {
-  this.data.forEach( (i: { bookcategoryname: any; }) => {
-    if(i.bookcategoryname  === this.BookCategory ) {
-      this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'casestatusname is already exist, Please input different name' }];
-        this.BookCategory = null;
+  this.data.forEach( i => {
+    if(i.bookcategoryname  === this.bookCategory ) {
+      this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'bookcategoryname is already exist, Please input different name' }];
+        this.bookCategory = null;
     }
   })
 }

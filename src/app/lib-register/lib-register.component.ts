@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Message } from 'primeng/api';
 import { Table } from 'primeng/table';
+import { ResponseMessage } from '../CommonModules/message-constants';
 import { PathConstants } from '../CommonModules/pathconstants';
 import { RestApiService } from '../Services/rest-api.service';
 
@@ -17,7 +20,7 @@ export class LibRegisterComponent implements OnInit {
   id: any;
   loading: any;
   cols: any;
-  data: any;
+  data: any[] = [];
   showErrMsg: boolean | undefined;
   showMatchMsg!: boolean;
   disableSave: boolean = false;
@@ -27,7 +30,10 @@ export class LibRegisterComponent implements OnInit {
   UpperCaseErrMsg: any;
   LengthErrMsg: any;
   validatePassword: boolean = false;
+  responseMsg: Message[] = [];
+  
   constructor(private resApiService: RestApiService) { }
+  @ViewChild('f', {static: false}) _respondentForm!: NgForm;
 
   ngOnInit(): void {
     this.cols = [
@@ -78,16 +84,7 @@ export class LibRegisterComponent implements OnInit {
     this.confirmpassword = null;
 
   }
-  onCheck() {
-
-    this.data.forEach((i: { email: any; }) => {
-      if (i.email === this.email) {
-        //this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'casestatusname is already exist, Please input different name' }];
-        this.email = null;
-      }
-    })
-
-  }
+  
   checkPassword() {
     if (this.password !== undefined && this.password !== null && this.password.trim() !== '' &&
       this.confirmpassword !== undefined && this.confirmpassword !== null && this.confirmpassword.trim() !== '') {
@@ -146,5 +143,16 @@ export class LibRegisterComponent implements OnInit {
       this.pswdStrongMsg = true;
     // this.validatePassword=false;
   }
-}
+
+  onCheck() {
+    this.data.forEach(i => {
+      if(i.username  === this.username && i.email === this.email) {
+        this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'Username & emailId, Please input different name' }];
+          this.username = null;
+          this.email=null;
+      }
+    })
+  }
+  }
+  
 

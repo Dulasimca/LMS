@@ -2,6 +2,8 @@
     <div class="grid to-center">
         <!-- <div class="col-12 md:col-12 lg:col-12"> -->
         <p-panel header="LibRegisterForm">
+             <p-messages [(value)]="responseMsg" [enableService]="false"
+                [hideTransitionOptions]="'500ms cubic-bezier(0.86, 0, 0.076, 1)'"></p-messages>
             <div class="col-12 md:col-12 lg:col-12 box" style="margin-top: 20px;">
                 <form #f="ngForm" name="LibRegisterForm">
                     <div #main class="col-12 md:col-12 lg:col-12">
@@ -17,7 +19,7 @@
                                     </div>
                                     <div class="col-12 md:col-4 lg:col-3">
                                         <span class="p-float-label">
-                                            <input name="_email" type="email" (change)="onCheck()" [(ngModel)]="email"
+                                            <input name="_email" type="email" (change)="onCheck()" (change)="onCheck()" [(ngModel)]="email"
                                                 pInputText>
                                             <label for="_email">Your Email</label>
                                         </span>
