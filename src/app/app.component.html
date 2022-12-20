@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+<div class="col-12 md:col-12 lg:col-12" >
+    <app-header *ngIf="!hideheader"></app-header>
+    <div class="col-12 md:col-12 lg:col-12 no-padding" >
+        <div class="grid">
+            <div *ngIf="!hidemenu" class="col-2 md:col-2 lg:col-2" >
+                <app-menu ></app-menu>
+            </div>
+            <div [ngClass]="!hidemenu ? 'col-10 md:col-10 lg:col-10' : 'col-12 md:col-12 lg:col-12'">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

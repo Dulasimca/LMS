@@ -13,9 +13,16 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.items = [{
-      items: [{label: 'Update', },{label: 'Delete',}]
+      items: [{label: 'BOOKCATEGORYMASTER',routerLink:'/bookcategorymaster' },{label: 'COLLGEMASTER',routerLink:'/collegemaster'},
+              {label:'COURSEMASTER',routerLink:'/coursemaster'},{label:'EDITIONMASTER',routerLink:'/editionmaster'},
+               {label:'LANGUAGEMASTER',routerLink:'/languagemaster'},{label:'DEPARTMENTMASTER',routerLink:'/departmentmaster'},
+               {label:'STUDENT-REQUEST',routerLink:'/student-request'}]
    
      }];
   }
 
 }
+
+
+ // items: [{label: 'BOOKADD',routerLink: '/bookadd' },{label: 'STUDENT-REQUEST',routerLink: '/student-request'},{}]
+

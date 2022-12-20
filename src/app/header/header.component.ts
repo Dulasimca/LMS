@@ -14,11 +14,7 @@ export class HeaderComponent implements OnInit {
   router: any;
 
   ngOnInit(): void {
-    this.items = [{
-
-      items: [{label: 'BOOKADD',routerLink: '/bookadd' },{label: 'STUDENT-REQUEST',routerLink: '/student-request'},{}]
-
-     }];
+   
   }
   public onToggleSidenav = () => {
     this.sidenavToggle.emit(this.toggle); //sends 'true' i.e) says menu to open in app component

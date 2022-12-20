@@ -23,16 +23,24 @@ export class StudentRequestComponent implements OnInit {
   Editiondata: any;
   Categorydata: any;
   sno:any;
-
-  
+ 
 
   constructor(private restapiservice: RestApiService) { }
 
   ngOnInit(): void {
+    //this.bookid=0;
     
     this.restapiservice.get(PathConstants.editionmaster_Get).subscribe(res => {this.Editiondata=res.Table})
     this.restapiservice.get(PathConstants.categorymaster_Get).subscribe(res => {this.Categorydata=res.Table})
-   
+    this.cols = [
+      { field: 'vfirstname', header: 'Name', align: 'left !important' },
+      { field: 'vregno', header: 'RegNo', align: 'right !important' },
+      { field: 'vbookcategoryid', header: 'BookCategory', align: 'left !important' },
+      { field: 'veditionid', header: 'Edition', align: 'left !important' },
+      { field: 'vborrowdate', header: 'BorrowDate', align: 'left !important' },
+      { field: 'vduedate', header: 'DueDate', align: 'left !important' },
+     
+    ]
   }
 
   onSelect(type: any) {
@@ -40,7 +48,6 @@ export class StudentRequestComponent implements OnInit {
     let editionSelection:any = [];
     let bookcategorySelection:any =[];
     switch (type) {
-    
           case 'B':
             this.Categorydata.forEach((c:any) => {
               bookcategorySelection.push({ label: c.v_bookcategoryname, value: c.v_bookcategoryid });
@@ -60,6 +67,7 @@ export class StudentRequestComponent implements OnInit {
   
 
 onSave(){
+  if(this.sno==0){
     const params = {
       'sno': this.sno,
       'firstname': this.firstname,
@@ -70,15 +78,33 @@ onSave(){
       'duedate':this.duedate,
     };
     this.restapiservice.post(PathConstants.StudentreqEntity_Post, params).subscribe(res => { }) 
-
   }
-
-
+  else{
+    const params = {
+      'sno': this.sno,
+      'firstname': this.firstname,
+      'regno':this.registerNumber,
+      'bookcategoryid':this.bookcategory,
+      'editionid':this.bookedition,
+      'borrowdate':this.borrowdate,
+      'duedate':this.duedate,
+    };
+  }}
 
 onView(){
-
+  this.restapiservice.get(PathConstants.Getstudentreq).subscribe(res => {this.data = res.Table
+  })
 }
 onEdit(rowData: any) {
-
+this.sno=rowData.vsno;
+this.firstname=rowData.vfirstname;
+this.registerNumber=rowData.vregno;
+this.bookcategory=rowData.v_bookcategoryid;
+this.bookcategoryOptions=[{label:rowData.v_bookcategoryname,value:rowData.v_bookcategoryid }];
+this.bookedition=rowData.v_editionid;
+this.bookeditionOptions=[{label:rowData.v_editionname,value:rowData.v_editionid }];
+this.borrowdate=rowData.vborrowdate;
+this.duedate=rowData.vduedate;
 }
+
 }

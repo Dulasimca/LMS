@@ -133,6 +133,6 @@ onEdit(rowData:any){
   this.date=rowData.v_publisheddate;
   this.noCopies=rowData.v_copies;
   this.remarks=rowData.v_remarks;
-  
 }
+
 }

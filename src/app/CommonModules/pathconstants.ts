@@ -25,4 +25,5 @@ export class PathConstants {
     public static readonly editionmaster_Get='BookEdition';
     public static readonly updateedition_Post='updateeditionmaster/Post';
     public static readonly StudentreqEntity_Post='studentRequest/Post';
+    public static readonly Getstudentreq='studentRequest';
 }
