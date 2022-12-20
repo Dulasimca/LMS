@@ -74,7 +74,6 @@ export class LibRegisterComponent implements OnInit {
     this.email = rowData.v_email;
     this.password = rowData.v_password;
     this.confirmpassword = rowData.v_confirmpassword;
-
   }
   onclear() {
     this.id = 0;
@@ -82,7 +81,6 @@ export class LibRegisterComponent implements OnInit {
     this.email = null;
     this.password = null;
     this.confirmpassword = null;
-
   }
   
   checkPassword() {
@@ -103,9 +101,9 @@ export class LibRegisterComponent implements OnInit {
     }
   }
 
-  check(confirmpassword: any) {
+  check(password: any) {
 
-    if (confirmpassword.match(/[@$!%*?&]/g)) {
+    if (password.match(/[@$!%*?&]/g)) {
       this.SpecialCharErrMsg = false;
       this.validatePassword = true;
 
@@ -114,7 +112,7 @@ export class LibRegisterComponent implements OnInit {
       this.pswdStrongMsg = false;
       this.validatePassword = false;
     }
-    if (confirmpassword.match(/[0-9]/g)) {
+    if (password.match(/[0-9]/g)) {
       this.NumericErrMsg = false;
       this.validatePassword = true;
     } else {
@@ -123,7 +121,7 @@ export class LibRegisterComponent implements OnInit {
       this.validatePassword = false;
 
     }
-    if (confirmpassword.match(/[A-Z]/g)) {
+    if (password.match(/[A-Z]/g)) {
       this.UpperCaseErrMsg = false;
       this.validatePassword = true;
     } else {
@@ -131,7 +129,7 @@ export class LibRegisterComponent implements OnInit {
       this.pswdStrongMsg = false;
       this.validatePassword = false;
     }
-    if (confirmpassword.length >= 8) {
+    if (password.length >= 8) {
       this.LengthErrMsg = false;
       this.validatePassword = true;
     } else {
@@ -139,17 +137,16 @@ export class LibRegisterComponent implements OnInit {
       this.pswdStrongMsg = false;
       this.validatePassword = false;
     }
-    if (confirmpassword.match(/[@$!%*?&]/g) && confirmpassword.match(/[0-9]/g) && confirmpassword.match(/[A-Z]/g) && confirmpassword.length > 8)
+    if (password.match(/[@$!%*?&]/g) && password.match(/[0-9]/g) && password.match(/[A-Z]/g) && password.length > 8)
       this.pswdStrongMsg = true;
     // this.validatePassword=false;
   }
 
   onCheck() {
     this.data.forEach(i => {
-      if(i.username  === this.username && i.email === this.email) {
+      if(i.username  === this.username ) {
         this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'Username & emailId, Please input different name' }];
           this.username = null;
-          this.email=null;
       }
     })
   }
