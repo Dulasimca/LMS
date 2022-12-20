@@ -34,8 +34,6 @@ import { DepartmentmasterComponent } from './Master/departmentmaster/departmentm
 import { CoursemasterComponent } from './Master/coursemaster/coursemaster.component';
 import { MessagesModule } from 'primeng/messages';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,12 +72,6 @@ import { MessagesModule } from 'primeng/messages';
     TableModule,
     MenuModule,
     MessagesModule,
-    
-    
-
-    
-    
-    
    
   ],
   providers: [RestApiService],

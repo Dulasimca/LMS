@@ -42,13 +42,13 @@ export class BookaddComponent implements OnInit {
     this.restapiservice.get(PathConstants.categorymaster_Get).subscribe(res => {this.Categorydata=res.Table})
     this.cols = [
       { field: 'v_languagename', header: 'Language', align: 'left !important' },
-      { field: 'v_bookname', header: 'Bookname', align: 'right !important' },
+      { field: 'v_bookname', header: 'Bookname', align: 'left !important' },
       { field: 'v_author', header: 'Author', align: 'left !important' },
       { field: 'v_editionname', header: 'Edition', align: 'left !important' },
       { field: 'v_bookcategoryname', header: 'Bookcategory', align: 'left !important' },
       { field: 'v_publisheddate', header: 'Date', align: 'left !important' },
-      { field: 'v_copies', header: 'Copies', align: 'left !important' },
-      { field: 'v_remarks', header: 'Remarks', align: 'left !important' },
+      { field: 'v_copies', header: 'Copies', align: 'right !important' },
+      { field: 'v_remarks', header: 'Remarks', align: 'right !important' },
     ]
   }
 

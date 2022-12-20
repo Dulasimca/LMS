@@ -64,7 +64,7 @@ onEdit(rowData: any) {
 }
 onCheck() {
   this.data.forEach(i => {
-    if(i.collegename  === this.collegename ) {
+    if(i.v_collegename  === this.collegename ) {
       this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'colleagename is already exist, Please input different name' }];
         this.collegename = null;
     }

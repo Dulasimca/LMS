@@ -67,7 +67,7 @@ this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
 }
 onCheck() {
   this.data.forEach(i => {
-    if(i.editionname  === this.editionname ) {
+    if(i.v_editionname  === this.editionname ) {
       this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'colleagename is already exist, Please input different name' }];
         this.editionname = null;
     }

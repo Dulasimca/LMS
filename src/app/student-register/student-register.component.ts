@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ResponseMessage } from '../CommonModules/message-constants';
 import { PathConstants } from '../CommonModules/pathconstants';
 import { RestApiService } from '../Services/rest-api.service';
+import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-student-register',
@@ -28,7 +31,7 @@ export class StudentRegisterComponent implements OnInit {
   password:any;
   confirmpassword:any;
   id:any;
-  data: any;
+  data: any[] = [];
   cols:any;
   Genderdata: any;
   Collegedata: any;
@@ -46,8 +49,10 @@ export class StudentRegisterComponent implements OnInit {
   validatePassword: boolean = false;
   pincode_max:any;
   sno:any;
-
+  responseMsg:Message[] =[];
+  @ViewChild('f', {static: false}) _respondentForm!: NgForm;
   constructor(private resApiService : RestApiService) { }
+  
 
   ngOnInit(): void {
     this.sno=0;
@@ -254,4 +259,13 @@ if (confirmpassword.match(/[0-9]/g)) {
  this.pswdStrongMsg = true;
  // this.validatePassword=false;
 }
+onCheck() {
+  this.data.forEach(i => {
+    if(i.vemail  === this.email ) {
+      this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'Emailid is already exist, Please input different ' }];
+        this.email = null;
+    }
+  })
+}
+
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PathConstants } from '../CommonModules/pathconstants';
+import { RestApiService } from '../Services/rest-api.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,17 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  roleId: any;
-  hostelCount: any;
-  wardenCount: any;
-  studentCount: any;
-  totalStudent: any;
-  expensesToday: any;
-  expensesMonthly: any;
-
-  constructor() { }
+  data:any;
+  
+  constructor(private restapiservice: RestApiService) { }
 
   ngOnInit(): void {
+    this.restapiservice.get(PathConstants.studentcount_Get,).subscribe(res => {this.data = res.Table[0].studentcount})
   }
 
 }
