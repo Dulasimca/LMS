@@ -1,9 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ResponseMessage } from 'src/app/CommonModules/message-constants';
+import { Component, OnInit } from '@angular/core';
 import { PathConstants } from 'src/app/CommonModules/pathconstants';
 import { RestApiService } from 'src/app/Services/rest-api.service';
-import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-departmentmaster',
@@ -15,46 +12,43 @@ export class DepartmentmasterComponent implements OnInit {
   College:any;
   selectedType:any;
   cols:any;
-  data: any[] = [];
-  DepartmentName: any;
-  responseMsg: Message[] = [];
-  
- 
- 
+  data:any;
+  departmentName: any;
+  departmentid:any;
   constructor(private restapiservice: RestApiService) { }
-  @ViewChild('f', {static: false}) _respondentForm!: NgForm;
 
   ngOnInit(): void {
+    this.departmentid=0;
     this.cols = [
-      { field:'v_departmentname', header:'departmentname', align: 'left !important' },
+      { field:'v_departmentname', header:'Departmentname', align: 'left !important' },
+      { field:'v_flag', header:'Status', align: 'left !important' }
     ]
   }
 onSave(){
+  if(this.departmentid==0){
   const params = {
-    'departmentid': 0,
-    'departmentname': this.DepartmentName,
+    'departmentid': this.departmentid,
+    'departmentname': this.departmentName,
+    'flag': (this.selectedType == 1) ? true : false
   };
   this.restapiservice.post(PathConstants.DepartmentMasterEntity_Post, params).subscribe(res => { })
-  this.onView();
-  this.onclear();
+}
+else{
+  const params = {
+    'departmentid': this.departmentid,
+    'departmentname': this.departmentName,
+    'flag': (this.selectedType == 1) ? true : false,
+  };
+  this.restapiservice.post(PathConstants.updatedepartment_Post, params).subscribe(res => { })
+}
 }
 onView(){
  this.restapiservice.get(PathConstants.department_Get).subscribe(res => {this.data = res.Table
   })
 }
-onEdit(row: any) {
-}
-onclear() {
- 
-  
-}
-
-onCheck() {
-  this.data.forEach(i => {
-    if(i.departmentname  === this.DepartmentName ) {
-      this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'colleagename is already exist, Please input different name' }];
-        this.DepartmentName = null;
-    }
-  })
+onEdit(rowData: any) {
+  this.departmentid=rowData.v_departmentid;
+  this.departmentName=rowData.v_departmentname;
+  this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
 }
 }
