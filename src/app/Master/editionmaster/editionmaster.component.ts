@@ -39,6 +39,7 @@ onSave()
   this.restapiservice.post(PathConstants.editionmaster_Post, params).subscribe(res => {
     
    })
+   this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'SuccessMessage' }];
   }
    else{
     const params = {
@@ -68,7 +69,7 @@ this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
 onCheck() {
   this.data.forEach(i => {
     if(i.v_editionname  === this.editionname ) {
-      this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'colleagename is already exist, Please input different name' }];
+      this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'editionname is already exist, Please input different name' }];
         this.editionname = null;
     }
   })

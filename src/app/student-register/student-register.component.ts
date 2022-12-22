@@ -175,6 +175,7 @@ else{
   };
   this.resApiService.post(PathConstants.updatestudentreg_Post, params).subscribe(res => { })
 }
+this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'SuccessMessage' }];
 }
 onView(){
   this.resApiService.get(PathConstants.studentreg_Get).subscribe(res => {this.data = res.Table

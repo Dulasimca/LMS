@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { RouterEvent } from '@angular/router';
+import { Message } from 'primeng/api';
+import { ResponseMessage } from '../CommonModules/message-constants';
 import { PathConstants } from '../CommonModules/pathconstants';
 import { RestApiService } from '../Services/rest-api.service';
 @Component({
@@ -30,6 +33,8 @@ export class BookaddComponent implements OnInit {
   Categorydata: any;
   loading:any;
   bookid:any;
+  responseMsg: Message[] = [];
+  @ViewChild('f', {static: false}) _respondentForm!: NgForm;
   constructor(private restapiservice: RestApiService) { }
 
   ngOnInit(): void {
@@ -96,7 +101,7 @@ onSave(){
     };
     console.log('edi',this.edition);
     this.restapiservice.post(PathConstants.book_Post, params).subscribe(res => { })
-    
+    this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'SuccessMessage' }];
   }
   else{
     const params = {
@@ -113,6 +118,7 @@ onSave(){
     };
     this.restapiservice.post(PathConstants.update_Post, params).subscribe(res => {
     })
+    this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'Successfully edit!!' }];
   }
   }
     

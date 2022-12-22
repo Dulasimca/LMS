@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Message } from 'primeng/api';
+import { ResponseMessage } from 'src/app/CommonModules/message-constants';
 import { PathConstants } from 'src/app/CommonModules/pathconstants';
 import { RestApiService } from 'src/app/Services/rest-api.service';
 
@@ -13,6 +16,8 @@ export class LanguagemasterComponent implements OnInit {
   cols:any;
   data:any[] = [];
   languageid:any;
+  responseMsg: Message[] = [];
+  @ViewChild('f', {static: false}) _respondentForm!: NgForm;
   constructor(private restapiservice: RestApiService) { }
 
   ngOnInit(): void {
@@ -59,11 +64,12 @@ onclear() {
   this.selectedType = null;
   
 }
-// onCheck(){
-//   this.data.forEach(i => {
-//   if(i.languagename === this.languagename){
-//     this.resp
-//   }
-//   })
-// }
+onCheck() {
+  this.data.forEach(i => {
+    if(i.v_languagename  === this.languagename ) {
+      this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'editionname is already exist, Please input different name' }];
+        this.languagename  = null;
+    }
+  })
+}
 }

@@ -37,6 +37,7 @@ onSave(){
     'flag': (this.selectedType == 1) ? true : false
   };
   this.restapiservice.post(PathConstants.bookcategory_Post, params).subscribe(res => { })
+  this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'SuccessMessage' }];
 }
 else{
   const params = {
@@ -45,6 +46,7 @@ else{
     'flag': (this.selectedType == 1) ? true : false
   };
   this.restapiservice.post(PathConstants.updatebookcategory_Post, params).subscribe(res => { })
+  this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'Successfully edit!!' }];
 }}
 onView(){
   this.restapiservice.get(PathConstants.categorymaster_Get).subscribe(res => {this.data = res.Table

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Message } from 'primeng/api';
+import { ResponseMessage } from '../CommonModules/message-constants';
 import { PathConstants } from '../CommonModules/pathconstants';
 import { RestApiService } from '../Services/rest-api.service';
 
@@ -23,7 +26,8 @@ export class StudentRequestComponent implements OnInit {
   Editiondata: any;
   Categorydata: any;
   sno:any;
- 
+  responseMsg: Message[] = [];
+  @ViewChild('f', {static: false}) _respondentForm!: NgForm;
 
   constructor(private restapiservice: RestApiService) { }
 
@@ -89,7 +93,8 @@ onSave(){
       'borrowdate':this.borrowdate,
       'duedate':this.duedate,
     };
-  }}
+  } this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'SuccessMessage' }];
+}
 
 onView(){
   this.restapiservice.get(PathConstants.Getstudentreq).subscribe(res => {this.data = res.Table

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Message } from 'primeng/api';
+import { ResponseMessage } from 'src/app/CommonModules/message-constants';
 import { PathConstants } from 'src/app/CommonModules/pathconstants';
 import { RestApiService } from 'src/app/Services/rest-api.service';
 
@@ -12,9 +15,11 @@ export class DepartmentmasterComponent implements OnInit {
   College:any;
   selectedType:any;
   cols:any;
-  data:any;
+  data: any[] = [];
   departmentName: any;
   departmentid:any;
+  responseMsg: Message[] = [];
+ @ViewChild('f', {static: false}) _respondentForm!: NgForm;
   constructor(private restapiservice: RestApiService) { }
 
   ngOnInit(): void {
@@ -50,5 +55,13 @@ onEdit(rowData: any) {
   this.departmentid=rowData.v_departmentid;
   this.departmentName=rowData.v_departmentname;
   this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
+}
+onCheck() {
+  this.data.forEach(i => {
+    if(i.v_departmentname  === this.departmentName ) {
+      this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'editionname is already exist, Please input different name' }];
+        this.departmentName = null;
+    }
+  })
 }
 }

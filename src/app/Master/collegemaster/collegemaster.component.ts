@@ -41,7 +41,7 @@ onSave(){
     'flag': (this.selectedType == 1) ? true : false
   };
   this.restapiservice.post(PathConstants.CollegeMasterEntity_Post, params).subscribe(res => { })
- 
+  this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'SuccessMessage' }];
 }
 else{
   const params = {
@@ -51,6 +51,7 @@ else{
   };
   this.restapiservice.post(PathConstants.updatecollegemaster_Post, params).subscribe(res => {
   })
+  this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'Successfully edit!!' }];
 }
 }
 onView(){
