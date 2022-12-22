@@ -13,6 +13,7 @@ export class CoursemasterComponent implements OnInit {
   cols:any;
   data:any;
  courseid:any;
+ loading:any;
   constructor(private restapiservice: RestApiService) {
     this.cols = [
     { field:'v_coursename', header: 'Coursename', align: 'left !important' },
@@ -28,6 +29,7 @@ onSave(){
     'courseid': this.courseid,
     'coursename': this.coursename,
     'isactive': (this.selectedType == 1) ? true : false
+
   };
   this.restapiservice.post(PathConstants.coursemaster_Post, params).subscribe(res => {
 })

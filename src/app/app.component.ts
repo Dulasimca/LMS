@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private router:Router){
     this.router.events.subscribe((events)=> {
      if(events instanceof NavigationEnd){
-       if((events.url ==='/header')||(events.url ==='/collegemaster')||(events.url ==='/bookadd')||(events.url==='/bookcategorymaster')||(events.url ==='/coursemaster')||(events.url ==='/departmentmaster')||(events.url ==='/editionmaster')||(events.url==='/languagemaster')||(events.url==='/student-request')) {
+       if((events.url ==='/header')||(events.url ==='/collegemaster')||(events.url ==='/bookadd')||(events.url==='/bookcategorymaster')||(events.url ==='/coursemaster')||(events.url ==='/departmentmaster')||(events.url ==='/editionmaster')||(events.url==='/languagemaster')||(events.url==='/student-request')||(events.url ==='/dashboard')) {
          this.hidemenu=false;
        }
        else{
@@ -24,7 +24,7 @@ export class AppComponent {
   
   this.router.events.subscribe((events)=> {
     if(events instanceof NavigationEnd){
-      if((events.url ==='/bookadd')||(events.url ==='/coursemaster')||(events.url === '/collegemaster')||(events.url==='/bookcategorymaster')||(events.url ==='/departmentmaster')||(events.url ==='/editionmaster')||(events.url==='/languagemaster')||(events.url==='/student-request')) {
+      if((events.url ==='/bookadd')||(events.url ==='/coursemaster')||(events.url === '/collegemaster')||(events.url==='/bookcategorymaster')||(events.url ==='/departmentmaster')||(events.url ==='/editionmaster')||(events.url==='/languagemaster')||(events.url==='/student-request')||(events.url === '/')) {
         this.hideheader=false;
       }
       else{

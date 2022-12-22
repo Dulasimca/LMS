@@ -15,6 +15,7 @@ export class DepartmentmasterComponent implements OnInit {
   data:any;
   departmentName: any;
   departmentid:any;
+  loading:any;
   constructor(private restapiservice: RestApiService) { }
 
   ngOnInit(): void {

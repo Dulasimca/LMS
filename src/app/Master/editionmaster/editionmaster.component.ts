@@ -17,6 +17,7 @@ export class EditionmasterComponent implements OnInit {
   data: any[] = [];
   editionid:any;
   responseMsg: Message[] = [];
+  loading:any;
   constructor(private restapiservice: RestApiService) { }
   @ViewChild('f', {static: false}) _respondentForm!: NgForm;
 

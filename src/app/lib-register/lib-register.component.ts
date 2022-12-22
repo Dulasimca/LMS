@@ -37,9 +37,9 @@ export class LibRegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.cols = [
-      { field: 'v_username', header: 'UserName', align: 'left !important' },
+      { field: 'v_username', header: 'Username', align: 'left !important' },
       { field: 'v_email', header: 'Email', align: 'right !important' },
-      { field: 'v_password', header: 'Passowrd', align: 'left !important' },
+      { field: 'v_password', header: 'Password', align: 'left !important' },
       { field: 'v_confirmpassword', header: 'Confirmpassword', align: 'left !important' },
 
     ]
@@ -48,7 +48,7 @@ export class LibRegisterComponent implements OnInit {
 
     this.resApiService.get(PathConstants.getlibrarienregister_Get).subscribe(res => {
       this.data = res.Table;
-      console.log('enter', this.data)
+     
     })
 
   }

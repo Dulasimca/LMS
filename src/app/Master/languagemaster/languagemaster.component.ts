@@ -13,13 +13,14 @@ export class LanguagemasterComponent implements OnInit {
   cols:any;
   data:any[] = [];
   languageid:any;
+  loading:any;
   constructor(private restapiservice: RestApiService) { }
 
   ngOnInit(): void {
     this.languageid=0;
     this.cols = [
       { field:'v_languagename', header: 'Language', align: 'left !important' },
-      { field:'v_flag', header: 'status', align: 'left !important' }
+      { field:'v_flag', header: 'Status', align: 'left !important' }
     ]
   }
 onSave(){

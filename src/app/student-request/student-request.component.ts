@@ -23,6 +23,7 @@ export class StudentRequestComponent implements OnInit {
   Editiondata: any;
   Categorydata: any;
   sno:any;
+  loading:any;
  
 
   constructor(private restapiservice: RestApiService) { }
@@ -34,11 +35,11 @@ export class StudentRequestComponent implements OnInit {
     this.restapiservice.get(PathConstants.categorymaster_Get).subscribe(res => {this.Categorydata=res.Table})
     this.cols = [
       { field: 'vfirstname', header: 'Name', align: 'left !important' },
-      { field: 'vregno', header: 'RegNo', align: 'right !important' },
-      { field: 'vbookcategoryid', header: 'BookCategory', align: 'left !important' },
+      { field: 'vregno', header: 'Regno', align: 'right !important' },
+      { field: 'vbookcategoryid', header: 'Bookcategory', align: 'left !important' },
       { field: 'veditionid', header: 'Edition', align: 'left !important' },
-      { field: 'vborrowdate', header: 'BorrowDate', align: 'left !important' },
-      { field: 'vduedate', header: 'DueDate', align: 'left !important' },
+      { field: 'vborrowdate', header: 'Borrowdate', align: 'left !important' },
+      { field: 'vduedate', header: 'Duedate', align: 'left !important' },
      
     ]
   }

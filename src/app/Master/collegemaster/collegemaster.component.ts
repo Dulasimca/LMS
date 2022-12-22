@@ -20,6 +20,7 @@ export class CollegemasterComponent implements OnInit {
   collegename: any;
   responseMsg: Message[] = [];
   collegeid:any;
+  loading:any;
 
 
   @ViewChild('f', {static: false}) _respondentForm!: NgForm;
@@ -29,7 +30,7 @@ export class CollegemasterComponent implements OnInit {
   ngOnInit(): void {
     this.collegeid=0;
     this.cols = [
-      { field: 'v_collegename', header: 'collegename', align: 'left !important' },
+      { field: 'v_collegename', header: 'Collegename', align: 'left !important' },
       { field: 'v_flag', header: 'Status', align: 'left !important' }
     ]
   }
