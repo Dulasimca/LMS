@@ -1,15 +1,17 @@
 export class PathConstants {
     public static readonly librarienregister_Post='librarienregister/Post';
+    public static readonly GetLibrarienCount_Get='LibrarienCount'
     public static readonly categorymaster_Get='BookCategoryMaster';
     public static readonly bookcategory_Post ='BookCategoryMaster/Post';
     public static readonly updatebookcategory_Post='updatebookcategory/Post';
     public static readonly book_Post='Book/Post';
     public static readonly book_Get='Book';
+    public static readonly studentcount_Get='studentcount'
     public static readonly update_Post='updatebookmaster/Post';
     public static readonly studentreg_Post='Studentreg/Post';
     public static readonly studentreg_Get='Studentreg';
     public static readonly updatestudentreg_Post='updatestudentreg/Post';
-    public static readonly studentcount_Get='studentcount'
+    public static readonly BookCount_Get='BookCount'
     public static readonly gendermaster_Get='GenderMaster';
     public static readonly collegemaster_Get='CollegeMaster';
     public static readonly coursemaster_Post='CourseMaster/Post';
@@ -29,4 +31,6 @@ export class PathConstants {
     public static readonly updateedition_Post='updateeditionmaster/Post';
     public static readonly StudentreqEntity_Post='studentRequest/Post';
     public static readonly Getstudentreq='studentRequest';
+    public static readonly GetBookOut_Get='BookOutCount'
+   
 }

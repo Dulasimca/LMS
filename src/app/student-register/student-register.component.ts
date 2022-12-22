@@ -50,6 +50,7 @@ export class StudentRegisterComponent implements OnInit {
   pincode_max:any;
   sno:any;
   responseMsg:Message[] =[];
+  loading:any;
   @ViewChild('f', {static: false}) _respondentForm!: NgForm;
   constructor(private resApiService : RestApiService) { }
   
@@ -68,7 +69,7 @@ export class StudentRegisterComponent implements OnInit {
       { field: 'vlastname', header: 'Lastname', align: 'right !important' },
       { field: 'vregno', header: 'Regno', align: 'left !important' },
       { field: 'vgendername', header: 'Gender', align: 'left !important' },
-      { field: 'vdob', header: 'DOB', align: 'left !important' },
+      { field: 'vdob', header: 'Dob', align: 'left !important' },
       { field: 'vage', header: 'Age', align: 'left !important' },
       { field: 'vemail', header: 'Email', align: 'left !important' },
       { field: 'vaddress', header: 'Address', align: 'left !important' },

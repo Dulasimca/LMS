@@ -1,197 +1,205 @@
 <div class="col-12 md:col-12 lg:col-12 container">
     <div class="grid to-center">
         <!-- <div class="col-12 md:col-12 lg:col-12"> -->
-            <p-panel header="studentRegisterForm">
-                <p-messages [(value)]="responseMsg" [enableService]="false"
+        <p-panel header="Student register">
+            <p-messages [(value)]="responseMsg" [enableService]="false"
                 [hideTransitionOptions]="'500ms cubic-bezier(0.86, 0, 0.076, 1)'"></p-messages>
-                <div class="col-12 md:col-12 lg:col-12 box" style="margin-top: 20px;">
-                    <form #f="ngForm" name="studentregisterForm">
-                        <div #main class="col-12 md:col-12 lg:col-12">
-                            <div class="grid to-center">
-                                <div #row1 class="col-12 md:col-12 lg:col-12">
-                                    <div class="grid">
+            <div class="col-12 md:col-12 lg:col-12 box" style="margin-top: 20px;">
+                <form #f="ngForm" name="studentregisterForm">
+                    <div #main class="col-12 md:col-12 lg:col-12">
+                        <div class="grid to-center">
+                            <div #row1 class="col-12 md:col-12 lg:col-12">
+                                <div class="grid">
 
-                                       <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <input name="_firstname" type="text" [(ngModel)]="firstname" pInputText>
-                                                <label for="_firstname">FirstName</label>
-                                            </span>
-                                        </div>
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <input name="_lastname" type="text" [(ngModel)]="lastname" pInputText>
-                                                <label for="_lastname">Lastname</label>
-                                            </span>
-                                        </div>
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <input name="_firstname" type="text" [(ngModel)]="firstname" pInputText>
+                                            <label for="_firstname">FirstName</label>
+                                        </span>
+                                    </div>
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <input name="_lastname" type="text" [(ngModel)]="lastname" pInputText>
+                                            <label for="_lastname">Lastname</label>
+                                        </span>
+                                    </div>
 
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <input name="_register" type="number" [(ngModel)]="registerNumber" pInputText>
-                                                <label for="_register">RegisterNumber</label>
-                                            </span>
-                                        </div>
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <input name="_register" type="number" [(ngModel)]="registerNumber"
+                                                pInputText>
+                                            <label for="_register">RegisterNumber</label>
+                                        </span>
+                                    </div>
 
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <p-dropdown name="_gender" [autoDisplayFirst]="false" [options]="genderOptions" (onClick)="onSelect('L')" [(ngModel)]="gender"
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <p-dropdown name="_gender" [autoDisplayFirst]="false"
+                                                [options]="genderOptions" (onClick)="onSelect('L')" [(ngModel)]="gender"
                                                 [required]="true">
-                                                </p-dropdown>
-                                                <label for="_gender">Gender</label>
-                                            </span>
-                                        </div>
+                                            </p-dropdown>
+                                            <label for="_gender">Gender</label>
+                                        </span>
+                                    </div>
 
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <p-calendar name="_dateformat" (onSelect)="CalculateAge()" [(ngModel)]="dob"></p-calendar>
-                                                <label for="_dateformat">DOB</label>
-                                            </span>
-                                        </div>
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <p-calendar name="_dateformat" (onSelect)="CalculateAge()"
+                                                [(ngModel)]="dob"></p-calendar>
+                                            <label for="_dateformat">DOB</label>
+                                        </span>
+                                    </div>
 
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <input name="_age" type="number" [(ngModel)]="age" pInputText>
-                                                <label for="_age">Age</label>
-                                            </span>
-                                        </div>
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <input name="_age" type="number" [(ngModel)]="age" pInputText>
+                                            <label for="_age">Age</label>
+                                        </span>
+                                    </div>
 
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <input name="_email" type="text" [(ngModel)]="email" pInputText>
-                                                <label for="_email">Email</label>
-                                            </span>
-                                        </div>
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <input name="_email" type="text" [(ngModel)]="email" pInputText>
+                                            <label for="_email">Email</label>
+                                        </span>
+                                    </div>
 
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <input name="_address" type="text" [(ngModel)]="address" pInputText>
-                                                <label for="_address">Address</label>
-                                            </span>
-                                        </div>
-                                        
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                           
-                                                <input name="_pincode" type="number" [(ngModel)]="pincode" pInputText minlength="6"
-                                                maxlength="6" appInputFormat="digitOnly" pattern="^6[0-4]\d{4}$" required/>
-                                                    <!-- <div>  <span *ngIf="(pincode != null && pincode !== undefined)">
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <input name="_address" type="text" [(ngModel)]="address" pInputText>
+                                            <label for="_address">Address</label>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-12 md:col-4 lg:col-3">
+
+                                        <input name="_pincode" type="number" [(ngModel)]="pincode" pInputText
+                                            minlength="6" maxlength="6" appInputFormat="digitOnly"
+                                            pattern="^6[0-4]\d{4}$" required />
+                                        <!-- <div>  <span *ngIf="(pincode != null && pincode !== undefined)">
                                                          <span *ngIf="(f.controls._pincode.invalid)||(pincode>pincode_max)"
                                                    style="color: crimson;font-size: 12px;">Invalid pincode</span>
                                                       </span>
                                             </div> -->
-                                            <div>  <label for="_pincode" [ngStyle]="{'color': (pincode !== null && pincode !== undefined) ? (pincode>pincode_max ? 'crimson' : '#495057') : '#495057'}">
+                                        <div> <label for="_pincode"
+                                                [ngStyle]="{'color': (pincode !== null && pincode !== undefined) ? (pincode>pincode_max ? 'crimson' : '#495057') : '#495057'}">
                                                 Pincode</label>
-                                          </div>
-                                        </div>
-
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <p-dropdown name="_collegename" [autoDisplayFirst]="false" [options]="collegenameOptions" (onClick)="onSelect('E')"[(ngModel)]="collegename"
-                                                [required]="true">
-                                                </p-dropdown>
-                                                <label for="_collegename">collegename</label>
-                                            </span>
-                                        </div>
-
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <p-dropdown name="_course" [autoDisplayFirst]="false" [options]="courseOptions" (onClick)="onSelect('B')"[(ngModel)]="course"
-                                                [required]="true">
-                                                </p-dropdown>
-                                                <label for="_course">Course</label>
-                                            </span>
-                                        </div>
-                                        
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <p-dropdown name="_department" [autoDisplayFirst]="false" [options]="departmentOptions" (onClick)="onSelect('A')" [(ngModel)]="department"
-                                                [required]="true">
-                                                </p-dropdown>
-                                                <label for="_department">Department</label>
-                                            </span>
-                                        </div>
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <input name="_password" type="text" [(ngModel)]="password" autocomplete="off" pInputText
-                                                minlength="8" maxlength="12" (input)="check(password)">
-                                                <label for="_password">Password</label>
-                                            </span>
-                                        </div>
-
-                                        <div class="col-12 md:col-4 lg:col-3">
-                                            <span class="p-float-label">
-                                                <input name="_confirmpassword" type="text" [(ngModel)]="confirmpassword" autocomplete="off" pInputText
-                                                minlength="8" maxlength="12" (input)="checkPassword()">
-                                                <label for="_confirmpassword">ConfirmPassword</label>
-                                                <div *ngIf="showErrMsg" style="color: rgb(250, 15, 62); font-size: 12px;">Password did
-                                                    not match</div>
-                                                    <div *ngIf="showMatchMsg" style="color: rgb(28, 182, 92); font-size: 12px; text-align: left;">Password
-                                                        matched!</div>
-                                                <div *ngIf="SpecialCharErrMsg"
-                    style="color: rgb(250, 15, 62); font-size: 12px; text-align: left;">Atleast one Special
-                    Character must!</div>
-                  <div *ngIf="NumericErrMsg"
-                    style="color: rgb(250, 15, 62); font-size: 12px; text-align: left;">Atleast one Numeric(0-9)
-                    must!</div>
-                  <div *ngIf="UpperCaseErrMsg"
-                    style="color: rgb(250, 15, 62); font-size: 12px; text-align: left">Atleast one
-                    Uppercase(A-Z) must!</div>
-                  <div *ngIf="LengthErrMsg" style="color: rgb(250, 15, 62); font-size: 12px; text-align: left">
-                    Minimum 8 Characters!</div>
-                                            </span>
                                         </div>
                                     </div>
-                                </div>
-                               
-                                <div #row3 class="col-12 md:col-11 lg:col-11 txt-to-center no-padding">
-                                    <button pButton type="button" label="Save" icon="pi pi-check" (click)="onSave()"></button>&nbsp;
-                                    <button pButton type="button" label="View" icon="pi pi-eye" (click)="onView()"></button>&nbsp;
-                                            
+
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <p-dropdown name="_collegename" [autoDisplayFirst]="false"
+                                                [options]="collegenameOptions" (onClick)="onSelect('E')"
+                                                [(ngModel)]="collegename" [required]="true">
+                                            </p-dropdown>
+                                            <label for="_collegename">collegename</label>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <p-dropdown name="_course" [autoDisplayFirst]="false"
+                                                [options]="courseOptions" (onClick)="onSelect('B')" [(ngModel)]="course"
+                                                [required]="true">
+                                            </p-dropdown>
+                                            <label for="_course">Course</label>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <p-dropdown name="_department" [autoDisplayFirst]="false"
+                                                [options]="departmentOptions" (onClick)="onSelect('A')"
+                                                [(ngModel)]="department" [required]="true">
+                                            </p-dropdown>
+                                            <label for="_department">Department</label>
+                                        </span>
+                                    </div>
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <input name="_password" type="text" [(ngModel)]="password"
+                                                autocomplete="off" pInputText minlength="8" maxlength="12"
+                                                (input)="check(password)">
+                                            <label for="_password">Password</label>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-12 md:col-4 lg:col-3">
+                                        <span class="p-float-label">
+                                            <input name="_confirmpassword" type="text" [(ngModel)]="confirmpassword"
+                                                autocomplete="off" pInputText minlength="8" maxlength="12"
+                                                (input)="checkPassword()">
+                                            <label for="_confirmpassword">ConfirmPassword</label>
+                                            <div *ngIf="showErrMsg" style="color: rgb(250, 15, 62); font-size: 12px;">
+                                                Password did
+                                                not match</div>
+                                            <div *ngIf="showMatchMsg"
+                                                style="color: rgb(28, 182, 92); font-size: 12px; text-align: left;">
+                                                Password
+                                                matched!</div>
+                                            <div *ngIf="SpecialCharErrMsg"
+                                                style="color: rgb(250, 15, 62); font-size: 12px; text-align: left;">
+                                                Atleast one Special
+                                                Character must!</div>
+                                            <div *ngIf="NumericErrMsg"
+                                                style="color: rgb(250, 15, 62); font-size: 12px; text-align: left;">
+                                                Atleast one Numeric(0-9)
+                                                must!</div>
+                                            <div *ngIf="UpperCaseErrMsg"
+                                                style="color: rgb(250, 15, 62); font-size: 12px; text-align: left">
+                                                Atleast one
+                                                Uppercase(A-Z) must!</div>
+                                            <div *ngIf="LengthErrMsg"
+                                                style="color: rgb(250, 15, 62); font-size: 12px; text-align: left">
+                                                Minimum 8 Characters!</div>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
+
+                            <div #row3 class="col-12 md:col-11 lg:col-11 txt-to-center no-padding">
+                                <button pButton type="button" label="Save" icon="pi pi-check"
+                                    (click)="onSave()"></button>&nbsp;
+                                <button pButton type="button" label="View" icon="pi pi-eye"
+                                    (click)="onView()"></button>&nbsp;
+
+                            </div>
                         </div>
-                    </form>
-                </div>
-            </p-panel>
+                    </div>
+                </form>
+            </div>
+        </p-panel>
         <!-- </div> -->
     </div>
 </div>
-<p-table [columns]="cols" [value]="data" [rows]="10" [rowsPerPageOptions]="[5,10,15,20]" responsiveLayout="scroll">
+<p-table #dt [columns]="cols" [value]="data" styleClass="p-datatable-gridlines" [loading]="loading" [paginator]="true"
+    [rows]="10" [rowsPerPageOptions]="[5,10,15,20]" responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+        <div class="grid" style="width: -webkit-fill-available;">
+            <div class="lg:col-6 no-pad-top no-pad-btm"></div>
+            <div class="lg:col-6 table-hdr-export">
+            </div>
+        </div>
+    </ng-template>
     <ng-template pTemplate="header" let-columns>
-    <tr>
-    <th>S.No</th>
-    <th *ngFor="let col of columns">
-     {{col.header}}
-    </th>
-    <th>
-    Edit/Update
-    </th>
-    </tr>
+        <tr>
+            <th>S.No:</th>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+            <th>Edit</th>
+        </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" let-columns="columns">
-    <tr>
-    <td class="td-border">
-    <span class="p-column-title">
-     S.No :
-     </span>
-    <span style="text-align: end;">
-     {{rowIndex+1}}
-    </span>
-    </td>
-    <td *ngFor="let col of columns" [style.text-align]="col.align" class="td-border">
-        <span class="p-column-title">
-        {{col.header}} :
-        </span>
-         <span style="text-align: end;"> {{rowData[col.field]}}
-         </span>
-        </td>
-         <td class="td-border">
-         <span class="p-column-title">
-        Edit/Update :
-        </span>
-        <span><button icon="pi pi-pencil" pButton type="button" (click)="onEdit(rowData)">
-         Edit
-         </button></span>
-         </td>
-         </tr>
-         </ng-template>
-         </p-table>
-
+        <tr>
+            <td>{{rowIndex+1}}</td>
+            <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+            </td>
+            <td>
+                <p-button icon="pi pi-pencil" (onClick)="onEdit(rowData)"></p-button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

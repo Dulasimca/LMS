@@ -16,6 +16,7 @@ export class BookcategorymasterComponent implements OnInit {
   cols:any;
   data: any[] = [];
   responseMsg: Message[] = [];
+  loading:any;
 
   @ViewChild('f', {static: false}) _respondentForm!: NgForm;
   bookcategoryid: any;
@@ -25,7 +26,7 @@ export class BookcategorymasterComponent implements OnInit {
   ngOnInit(): void {
     this.bookcategoryid=0;
     this.cols = [
-      { field: 'v_bookcategoryname', header: 'bookcategoryname', align: 'left !important' },
+      { field: 'v_bookcategoryname', header: 'Bookcategoryname', align: 'left !important' },
       { field: 'v_flag', header: 'Status', align: 'left !important' }
     ]
   }

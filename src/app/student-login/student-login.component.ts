@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Message } from 'primeng/api';
+import { ResponseMessage } from '../CommonModules/message-constants';
+import { PathConstants } from '../CommonModules/pathconstants';
+import { RestApiService } from '../Services/rest-api.service';
 
 @Component({
   selector: 'app-student-login',
@@ -8,30 +13,37 @@ import { Router } from '@angular/router';
 })
 export class StudentLoginComponent implements OnInit {
 
-  registernumber: any;
+  email: any;
   password: any;
   showPwd: boolean = false;
-  // @ViewChild()
-  constructor( private _router: Router) { }
-
+  data:any[] = [];
+  responseMsg: Message[] = [];
+  
+  @ViewChild('f', {static: false}) _respondentForm!: NgForm;
+  constructor(private resApiService : RestApiService,private router: Router) { }
   ngOnInit(): void {
-   
+    this.resApiService.get(PathConstants.getlibrarienregister_Get).subscribe(res => {
+      this.data = res.Table;
+     
+    })
+
   }
 
   onLogin() {
-   
-    this._router.navigate(['/header']);
+    this.data.forEach((i:any) => {
+      if(
+        i.v_email === this.email && i.v_password === this.password) {
+          this.router.navigate(['/dashboard'])
+        } 
+        else{
+          this.responseMsg = [{ severity: ResponseMessage.ErrorSeverity, detail: 'Email is not correct, Please input correct email and password' }];
+          console.log('no match');
+        }
+    })
   }
+  
 
   onShowPwd() {
-    // if (password.trim() !== '' && this.password !== null && this.password !== undefined) {
-    //   this.showPwd = !this.showPwd;
-    //   if (type === 0) {
-    //     document.getElementById('pwd')?.setAttribute('value', this.password);
-    //   } else {
-
-    //   }
-    // }
     var inputValue = (<HTMLInputElement>document.getElementById('pwd'));
     console.log('in', inputValue)
     if (inputValue.type === 'password') {
@@ -42,6 +54,4 @@ export class StudentLoginComponent implements OnInit {
       inputValue.type = 'password';
     }
   }
-
-
 }

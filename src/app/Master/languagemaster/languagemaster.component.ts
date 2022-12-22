@@ -67,7 +67,7 @@ onclear() {
 onCheck() {
   this.data.forEach(i => {
     if(i.v_languagename  === this.languagename ) {
-      this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'editionname is already exist, Please input different name' }];
+      this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'languagename is already exist, Please input different name' }];
         this.languagename  = null;
     }
   })

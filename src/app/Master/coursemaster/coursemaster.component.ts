@@ -18,6 +18,7 @@ export class CoursemasterComponent implements OnInit {
  courseid:any;
  responseMsg: Message[] = [];
  @ViewChild('f', {static: false}) _respondentForm!: NgForm;
+ 
   constructor(private restapiservice: RestApiService) {
     this.cols = [
     { field:'v_coursename', header: 'Coursename', align: 'left !important' },
@@ -33,6 +34,7 @@ onSave(){
     'courseid': this.courseid,
     'coursename': this.coursename,
     'isactive': (this.selectedType == 1) ? true : false
+
   };
   this.restapiservice.post(PathConstants.coursemaster_Post, params).subscribe(res => {
 })
