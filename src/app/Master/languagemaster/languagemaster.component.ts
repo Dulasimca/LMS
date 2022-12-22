@@ -36,8 +36,7 @@ onSave(){
     'flag': (this.selectedType == 1) ? true : false
   };
   this.restapiservice.post(PathConstants.languagemaster_Post, params).subscribe(res => { })
-  this.onView();
-  this.onclear();
+  this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'SuccessMessage' }];
 }
 else{
   const params = {

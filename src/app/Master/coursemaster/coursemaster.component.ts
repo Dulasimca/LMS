@@ -37,10 +37,8 @@ onSave(){
     'isactive': (this.selectedType == 1) ? true : false
 
   };
-  this.restapiservice.post(PathConstants.coursemaster_Post, params).subscribe(res => {
-})
+  this.restapiservice.post(PathConstants.coursemaster_Post, params).subscribe(res => { })
 this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'SuccessMessage' }];
-this.onView();
 }
 else{
   const params = {
@@ -50,6 +48,7 @@ else{
   };
   this.restapiservice.post(PathConstants.updatecourse_Post, params).subscribe(res => {
   })
+  this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'Successfullu edit!!' }];
 }
 }
 onView(){

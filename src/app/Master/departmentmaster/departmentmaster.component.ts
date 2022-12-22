@@ -39,6 +39,7 @@ onSave(){
     'flag': (this.selectedType == 1) ? true : false
   };
   this.restapiservice.post(PathConstants.DepartmentMasterEntity_Post, params).subscribe(res => { })
+  this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'SuccessMessage' }];
 }
 else{
   const params = {
