@@ -26,6 +26,8 @@ export class StudentLoginComponent implements OnInit {
       this.data = res.Table;
      
     })
+    this.resApiService.get(PathConstants.studentreg_Get).subscribe(res => {this.data = res.Table
+    })
 
   }
 
