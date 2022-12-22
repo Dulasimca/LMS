@@ -19,6 +19,7 @@ export class DepartmentmasterComponent implements OnInit {
   departmentName: any;
   departmentid:any;
   responseMsg: Message[] = [];
+ 
  @ViewChild('f', {static: false}) _respondentForm!: NgForm;
   loading:any;
   constructor(private restapiservice: RestApiService) { }

@@ -17,6 +17,7 @@ export class CoursemasterComponent implements OnInit {
   data: any[] = [];
  courseid:any;
  responseMsg: Message[] = [];
+ loading:any;
  @ViewChild('f', {static: false}) _respondentForm!: NgForm;
  
   constructor(private restapiservice: RestApiService) {
