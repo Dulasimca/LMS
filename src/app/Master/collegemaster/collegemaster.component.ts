@@ -22,8 +22,7 @@ export class CollegemasterComponent implements OnInit {
   collegeid: any;
   loading: any;
 
-
-  @ViewChild('f', { static: false }) _respondentForm!: NgForm;
+  @ViewChild('f', {static: false}) _respondentForm!: NgForm;
 
   constructor(private restapiservice: RestApiService) { }
 
