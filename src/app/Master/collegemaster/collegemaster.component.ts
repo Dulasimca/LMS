@@ -13,7 +13,6 @@ import { RestApiService } from 'src/app/Services/rest-api.service';
 })
 export class CollegemasterComponent implements OnInit {
 
-  
   selectedType:any;
   cols:any;
   data: any[] = [];
@@ -21,7 +20,6 @@ export class CollegemasterComponent implements OnInit {
   responseMsg: Message[] = [];
   collegeid:any;
   loading:any;
-
 
   @ViewChild('f', {static: false}) _respondentForm!: NgForm;
 
