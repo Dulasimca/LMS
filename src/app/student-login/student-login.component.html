@@ -1,7 +1,7 @@
 <div class="col-12 md:col-12 lg:col-12" style="padding: 4.2rem 1rem;
 background: linear-gradient(#4c41e4, #6660c0);height: 100vh;">
-<p-messages [(value)]="responseMsg" [enableService]="false"
-                [hideTransitionOptions]="'500ms cubic-bezier(0.2, 0, 0.023, 5)'"></p-messages>
+    <p-messages [(value)]="responseMsg" [enableService]="false"
+        [hideTransitionOptions]="'500ms cubic-bezier(0.2, 0, 0.023, 5)'"></p-messages>
 
     <div class="grid p-fluid to-center">
         <div class="col-11 md:col-10 lg:col-6 bdr-box-light-blue" style="background: white; border-radius: 10px;">
@@ -21,8 +21,8 @@ background: linear-gradient(#4c41e4, #6660c0);height: 100vh;">
     border: 0.5px solid #1303f1 !important;"><i class="pi pi-user"></i></span>
                                         <span class="p-float-label p-input-icon-right">
                                             <input name="_register" type="text" style="background: white !important;"
-                                                pInputText [(ngModel)]="email" placeholder="email"
-                                                autocomplete="off" required>
+                                                pInputText [(ngModel)]="email" placeholder="email" autocomplete="off"
+                                                required>
                                             <label for="float-input">email</label>
                                         </span>
                                     </div>
@@ -58,14 +58,16 @@ background: linear-gradient(#4c41e4, #6660c0);height: 100vh;">
                             <div class="grid p-fluid to-center">
                                 <div class="col-6 md:col-4 lg:col-4">
                                     <button pButton type="button" class="p-button-raised p-button-rounded" label="Login"
-                                    (click)="onLogin()" [disabled]="(!email|| !password)"></button>
+                                        (click)="onLogin()" [disabled]="(!email|| !password)"></button>
                                     <!-- style="background-image: linear-gradient(to right, #709df9, #e63ae9);" -->
                                 </div>
                                 <div class="col-12 md:col-12 lg:col-12 txt-to-center">
                                     or
                                 </div>
-                                <h4 style="color:black;text-align: center;">Don't have an account?<a style="color: #110dec;"href="student-register">Student Register</a>
-                                    <h4 style="color:black;text-align: center;">Don't have an account?<a style="color: #110dec;"href="lib-register">Librarien Register</a>
+                                <h4 style="color:black;text-align: center;">Don't have an account?<a
+                                        style="color: #110dec;" href="student-register">Student Register</a>
+                                    <h4 style="color:black;text-align: center;">Don't have an account?<a
+                                            style="color: #110dec;" href="lib-register">Librarien Register</a>
                                     </h4>
                                 </h4>
                             </div>

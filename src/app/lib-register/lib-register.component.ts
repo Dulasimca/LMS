@@ -31,9 +31,9 @@ export class LibRegisterComponent implements OnInit {
   LengthErrMsg: any;
   validatePassword: boolean = false;
   responseMsg: Message[] = [];
-  
+
   constructor(private resApiService: RestApiService) { }
-  @ViewChild('f', {static: false}) _respondentForm!: NgForm;
+  @ViewChild('f', { static: false }) _respondentForm!: NgForm;
 
   ngOnInit(): void {
     this.cols = [
@@ -48,7 +48,7 @@ export class LibRegisterComponent implements OnInit {
 
     this.resApiService.get(PathConstants.getlibrarienregister_Get).subscribe(res => {
       this.data = res.Table;
-     
+
     })
 
   }
@@ -82,7 +82,7 @@ export class LibRegisterComponent implements OnInit {
     this.password = null;
     this.confirmpassword = null;
   }
-  
+
   checkPassword() {
     if (this.password !== undefined && this.password !== null && this.password.trim() !== '' &&
       this.confirmpassword !== undefined && this.confirmpassword !== null && this.confirmpassword.trim() !== '') {
@@ -144,12 +144,12 @@ export class LibRegisterComponent implements OnInit {
 
   onCheck() {
     this.data.forEach(i => {
-      if(i.username  === this.username ) {
+      if (i.username === this.username) {
         this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'Username & emailId, Please input different name' }];
-          this.username = null;
+        this.username = null;
       }
     })
   }
-  }
-  
+}
+
 

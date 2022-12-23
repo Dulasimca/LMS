@@ -11,68 +11,68 @@ import { RestApiService } from 'src/app/Services/rest-api.service';
   styleUrls: ['./editionmaster.component.css']
 })
 export class EditionmasterComponent implements OnInit {
-  editionname:any;
-  selectedType:any;
-  cols:any;
+  editionname: any;
+  selectedType: any;
+  cols: any;
   data: any[] = [];
-  editionid:any;
+  editionid: any;
   responseMsg: Message[] = [];
-  loading:any;
+  loading: any;
   constructor(private restapiservice: RestApiService) { }
-  @ViewChild('f', {static: false}) _respondentForm!: NgForm;
+  @ViewChild('f', { static: false }) _respondentForm!: NgForm;
 
 
   ngOnInit(): void {
-    this.editionid=0;
+    this.editionid = 0;
     this.cols = [
-      { field:'v_editionname', header: 'Edition', align: 'left !important' },
-      { field:'v_flag',header:'Status',align:'left !important'}
+      { field: 'v_editionname', header: 'Edition', align: 'left !important' },
+      { field: 'v_flag', header: 'Status', align: 'left !important' }
     ]
   }
-onSave()
-{
-  if(this.editionid==0){
-    const params = {
-      'editionid': this.editionid,
-      'editionname': this.editionname,
-      'flag': (this.selectedType == 1) ? true : false
-    };
-  this.restapiservice.post(PathConstants.editionmaster_Post, params).subscribe(res => {
-    
-   })
-   this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'SuccessMessage' }];
-  }
-   else{
-    const params = {
-      'editionid': this.editionid,
-      'editionname': this.editionname,
-      'flag': (this.selectedType == 1) ? true : false
-    };
-    this.restapiservice.post(PathConstants.updateedition_Post, params).subscribe(res => { })
-  }
-}
-onView(){
-  this.restapiservice.get(PathConstants.editionmaster_Get).subscribe(res => {this.data = res.Table
-  })
-}
-onEdit(rowData:any){
-this.editionid = rowData.v_editionid;
-this.editionname = rowData.v_editionname;
-this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
-}
+  onSave() {
+    if (this.editionid == 0) {
+      const params = {
+        'editionid': this.editionid,
+        'editionname': this.editionname,
+        'flag': (this.selectedType == 1) ? true : false
+      };
+      this.restapiservice.post(PathConstants.editionmaster_Post, params).subscribe(res => {
 
- onclear() {
-  //this.editionid = 0;
-  this.editionname = null;
-  this.selectedType = null;
-  
-}
-onCheck() {
-  this.data.forEach(i => {
-    if(i.v_editionname  === this.editionname ) {
-      this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'editionname is already exist, Please input different name' }];
-        this.editionname = null;
+      })
+      this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'SuccessMessage' }];
     }
-  })
-}
+    else {
+      const params = {
+        'editionid': this.editionid,
+        'editionname': this.editionname,
+        'flag': (this.selectedType == 1) ? true : false
+      };
+      this.restapiservice.post(PathConstants.updateedition_Post, params).subscribe(res => { })
+    }
+  }
+  onView() {
+    this.restapiservice.get(PathConstants.editionmaster_Get).subscribe(res => {
+      this.data = res.Table
+    })
+  }
+  onEdit(rowData: any) {
+    this.editionid = rowData.v_editionid;
+    this.editionname = rowData.v_editionname;
+    this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
+  }
+
+  onclear() {
+    //this.editionid = 0;
+    this.editionname = null;
+    this.selectedType = null;
+
+  }
+  onCheck() {
+    this.data.forEach(i => {
+      if (i.v_editionname === this.editionname) {
+        this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'editionname is already exist, Please input different name' }];
+        this.editionname = null;
+      }
+    })
+  }
 }

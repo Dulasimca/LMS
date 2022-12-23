@@ -9,23 +9,23 @@ import { MenuItem } from 'primeng/api';
 })
 export class HeaderComponent implements OnInit {
   items: MenuItem[] = [];
-   public toggle: boolean = true;
-   public sidenavToggle = new EventEmitter();
-  
-  
-   constructor( private _router: Router) { }
+  public toggle: boolean = true;
+  public sidenavToggle = new EventEmitter();
+
+
+  constructor(private _router: Router) { }
 
 
   ngOnInit(): void {
-   
+
   }
   public onToggleSidenav = () => {
     this.sidenavToggle.emit(this.toggle); //sends 'true' i.e) says menu to open in app component
     this.toggle = !this.toggle; //set toggle to 'false' after opening menu
   }
-  onLog() { 
+  onLog() {
     this._router.navigate(['/student_login']);
   }
-   }
+}
 
-    
+

@@ -11,62 +11,63 @@ import { RestApiService } from 'src/app/Services/rest-api.service';
   styleUrls: ['./coursemaster.component.css']
 })
 export class CoursemasterComponent implements OnInit {
-  coursename:any;
-  selectedType:any;
-  cols:any;
+  coursename: any;
+  selectedType: any;
+  cols: any;
   data: any[] = [];
- courseid:any;
- responseMsg: Message[] = [];
- loading:any;
- @ViewChild('f', {static: false}) _respondentForm!: NgForm;
- 
+  courseid: any;
+  responseMsg: Message[] = [];
+  loading: any;
+  @ViewChild('f', { static: false }) _respondentForm!: NgForm;
+
   constructor(private restapiservice: RestApiService) {
     this.cols = [
-    { field:'v_coursename', header: 'Coursename', align: 'left !important' },
-    { field:'v_flag',header:'Status',align: 'left !important'}
+      { field: 'v_coursename', header: 'Coursename', align: 'left !important' },
+      { field: 'v_flag', header: 'Status', align: 'left !important' }
     ]
   }
 
   ngOnInit(): void {
   }
-onSave(){ 
-  if(this.courseid==0){
-  const params = {
-    'courseid': this.courseid,
-    'coursename': this.coursename,
-    'isactive': (this.selectedType == 1) ? true : false
+  onSave() {
+    if (this.courseid == 0) {
+      const params = {
+        'courseid': this.courseid,
+        'coursename': this.coursename,
+        'isactive': (this.selectedType == 1) ? true : false
 
-  };
-  this.restapiservice.post(PathConstants.coursemaster_Post, params).subscribe(res => { })
-this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'SuccessMessage' }];
-}
-else{
-  const params = {
-    'courseid': this.courseid,
-    'coursename': this.coursename,
-    'isactive': (this.selectedType == 1) ? true : false
-  };
-  this.restapiservice.post(PathConstants.updatecourse_Post, params).subscribe(res => {
-  })
-  this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'Successfullu edit!!' }];
-}
-}
-onView(){
-  this.restapiservice.get(PathConstants.coursemaster_Get).subscribe(res => {this.data = res.Table
-  })
-}
-onEdit(rowData:any){
-this.courseid=rowData.v_courseid;
-this.coursename=rowData.v_coursename;
-this.selectedType = (rowData.isactive === 'Active') ? 1 : 0;
-}
-onCheck() {
-  this.data.forEach( i => {
-    if(i.v_coursemaster  == this.coursename ) {
-      this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'coursename is already exist, Please input different name' }];
+      };
+      this.restapiservice.post(PathConstants.coursemaster_Post, params).subscribe(res => { })
+      this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'SuccessMessage' }];
+    }
+    else {
+      const params = {
+        'courseid': this.courseid,
+        'coursename': this.coursename,
+        'isactive': (this.selectedType == 1) ? true : false
+      };
+      this.restapiservice.post(PathConstants.updatecourse_Post, params).subscribe(res => {
+      })
+      this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'Successfullu edit!!' }];
+    }
+  }
+  onView() {
+    this.restapiservice.get(PathConstants.coursemaster_Get).subscribe(res => {
+      this.data = res.Table
+    })
+  }
+  onEdit(rowData: any) {
+    this.courseid = rowData.v_courseid;
+    this.coursename = rowData.v_coursename;
+    this.selectedType = (rowData.isactive === 'Active') ? 1 : 0;
+  }
+  onCheck() {
+    this.data.forEach(i => {
+      if (i.v_coursemaster == this.coursename) {
+        this.responseMsg = [{ severity: ResponseMessage.WarnSeverity, detail: 'coursename is already exist, Please input different name' }];
         this.coursename = null;
         console.log('jjh');
-    }
-  })
-}
+      }
+    })
+  }
 }

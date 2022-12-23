@@ -16,34 +16,32 @@ export class StudentLoginComponent implements OnInit {
   email: any;
   password: any;
   showPwd: boolean = false;
-  data:any[] = [];
+  data: any[] = [];
   responseMsg: Message[] = [];
-  
-  @ViewChild('f', {static: false}) _respondentForm!: NgForm;
-  constructor(private resApiService : RestApiService,private router: Router) { }
+
+  @ViewChild('f', { static: false }) _respondentForm!: NgForm;
+  constructor(private resApiService: RestApiService, private router: Router) { }
   ngOnInit(): void {
     this.resApiService.get(PathConstants.getlibrarienregister_Get).subscribe(res => {
       this.data = res.Table;
-     
-    })
-    this.resApiService.get(PathConstants.studentreg_Get).subscribe(res => {this.data = res.Table
-    })
 
+    })
+    
   }
 
   onLogin() {
-    this.data.forEach((i:any) => {
-      if(
+    this.data.forEach((i: any) => {
+      if (
         i.v_email === this.email && i.v_password === this.password) {
-          this.router.navigate(['/dashboard'])
-        } 
-        else{
-          this.responseMsg = [{ severity: ResponseMessage.ErrorSeverity, detail: 'Email is not correct, Please input correct email and password' }];
-          console.log('no match');
-        }
+        this.router.navigate(['/dashboard'])
+      }
+      else {
+        this.responseMsg = [{ severity: ResponseMessage.ErrorSeverity, detail: 'Email is not correct, Please input correct email and password' }];
+        console.log('no match');
+      }
     })
   }
-  
+
 
   onShowPwd() {
     var inputValue = (<HTMLInputElement>document.getElementById('pwd'));
