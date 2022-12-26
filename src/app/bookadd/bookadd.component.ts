@@ -101,6 +101,7 @@ export class BookaddComponent implements OnInit {
       };
       console.log('edi', this.edition);
       this.restapiservice.post(PathConstants.book_Post, params).subscribe(res => { })
+      
       this.responseMsg = [{ severity: ResponseMessage.SuccessSeverity, detail: 'SuccessMessage' }];
     }
     else {
@@ -141,5 +142,6 @@ export class BookaddComponent implements OnInit {
     this.noCopies = rowData.v_copies;
     this.remarks = rowData.v_remarks;
   }
-
 }
+
+

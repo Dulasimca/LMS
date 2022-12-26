@@ -24,11 +24,8 @@ export class StudentLoginComponent implements OnInit {
   ngOnInit(): void {
     this.resApiService.get(PathConstants.getlibrarienregister_Get).subscribe(res => {
       this.data = res.Table;
-
     })
-    
   }
-
   onLogin() {
     this.data.forEach((i: any) => {
       if (
